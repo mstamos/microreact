@@ -8,9 +8,9 @@ meteor-platform
 meteorhacks:flow-router
 twbs:bootstrap
 reactjs:react
-accounts-password
 reactive-var
 momentjs:moment
 useraccounts:core
 
 tap:i18n
+accounts-password

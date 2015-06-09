@@ -25,29 +25,50 @@ SignUp = React.createClass({
       }
     },
     saveUsername (username) {
-        console.log(username);
-        if (!this.props.isEmail(username)){
-            throw new Meteor.Error(406,TAPi18n.__('not_an_email'));
-        }
         this.setState({
             username: username
         })
     },
     saveEmail (email) {
-        console.log(email);
-
         this.setState({
             email: email
         })
     },
     savePassword (password) {
-        console.log(password);
         this.setState({
-            username: password
+            password: password
         })
     },
     createUser (event) {
         event.preventDefault();
+        console.log(this.state);
+        Meteor.call("methods", this.state.username, function (error, result) {
+            if(!error) {
+                if (result) {
+                    throw new Meteor.Error(406, TAPi18n.__("user_exist"));
+                }
+            }
+        });
+        //if(!this.props.isEmail(this.state.email)) {
+        //    throw new Meteor.Error(406, TAPi18n.__("not_valid_email"));
+        //}
+        if(!this.props.isValidPassword(this.state.password)) {
+            throw new Meteor.Error(406, TAPi18n.__("not_valid_password"));
+        }
+        var userData= this.state;
+        var userData = _.extend(userData, {
+            profile:{
+
+            }
+        });
+        console.log(userData);
+        Meteor.call("registerUser", userData, function (error, result) {
+            if (!error) {
+                console.log("Welcome abord");
+            } else {
+                console.log("Something went wrong");
+            }
+        })
 
     },
     render () {
@@ -63,12 +84,16 @@ SignUp = React.createClass({
                     defaultValue = {this.state.email}
                     label={"Email"}
                     placeholder={"Your email"}
-                />
+                    getInputValue={this.saveEmail}
+
+                    />
                 <RegistrationInput
                     defaultValue = {this.state.password}
                     label={"Password"}
                     placeholder={"Your password"}
-                />
+                    getInputValue={this.savePassword}
+
+                    />
                 <button onClick={this.createUser}>Sign Up</button>
             </div>
         );
@@ -89,11 +114,19 @@ Registration = React.createClass({
         console.log('Please enter a valid email address.');
         return false;
     },
-    render: function() {
+    isValidPassword (password) {
+        if (password.length < 6) {
+            console.log('Your password should be 6 characters or longer.');
+            return false;
+        }
+        return true;
+    },
+    render () {
         switch(this.state.step) {
             case 1:
                 return <SignUp
                         isEmail={this.isEmail}
+                        isValidPassword={this.isValidPassword}
                     />
             case 2:
                 return <SurveyFields />
