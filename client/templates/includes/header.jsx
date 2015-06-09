@@ -11,10 +11,11 @@ Header = React.createClass({
                                <span className="icon-bar"></span>
                                <span className="icon-bar"></span>
                            </button>
-                           <a className="navbar-brand" href="{{pathFor 'postsList'}}">Microscope</a>
+                           <a className="navbar-brand" href="/">Microscope</a>
                        </div>
                        <div className="collapse navbar-collapse" id="navigation">
                            <ul className="nav navbar-nav">
+                               <li><a href="/submit">Submit Post</a></li>
                            </ul>
                            <ul className="nav navbar-nav navbar-right">
                            </ul>
