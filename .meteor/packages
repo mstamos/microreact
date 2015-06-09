@@ -13,3 +13,4 @@ reactive-var
 momentjs:moment
 useraccounts:core
 
+tap:i18n
