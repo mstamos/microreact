@@ -15,12 +15,12 @@ Meteor.methods({
         return false;
     },
     "registerUser": function (userData) {
-        check(userdata, {
+        check(userData, {
             username: String,
             password: String,
             email: String
         });
-        if (_.isEmpty(userdata.username) || _.isEmpty(userData.email || _.isEmpty(userData.password))) {
+        if (_.isEmpty(userData.username) || _.isEmpty(userData.email || _.isEmpty(userData.password))) {
             throw new Meteor.Error(401,TAPi18n.__("not_empty"));
         }
         return Accounts.createUser(

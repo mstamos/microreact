@@ -1,5 +1,6 @@
 Header = React.createClass({
    render () {
+       console.log(Meteor.userId());
        return (
            <div>
                <nav className="navbar navbar-default" role="navigation">
@@ -15,7 +16,7 @@ Header = React.createClass({
                        </div>
                        <div className="collapse navbar-collapse" id="navigation">
                            <ul className="nav navbar-nav">
-                               <li><a href="/submit">Submit Post</a></li>
+                               {Meteor.userId() ? <li><a href="/submit">Submit Post</a></li> : ''}
                            </ul>
                            <ul className="nav navbar-nav navbar-right">
                            </ul>
