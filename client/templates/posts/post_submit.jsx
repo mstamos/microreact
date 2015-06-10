@@ -1,4 +1,16 @@
+/**
+ * This component renders a post input form.
+ * Props
+ *      title           String      The title of the input field
+ *      placeholder     String      The placeholder of the input
+ *      errorclassName
+ *      errorMessage
+ */
 const PostInput = React.createClass({
+    propTypes: {
+        title :  React.PropTypes.string.isRequired,
+        placeholder: React.PropTypes.string.isRequired
+    },
     render () {
         const errorClassName = "form-group " + this.props.errorclassName;
         return (
@@ -14,6 +26,11 @@ const PostInput = React.createClass({
         );
     }
 });
+
+/**
+ * This component renders a form of two input and a button to submit a post
+ *
+ */
 PostSubmit = React.createClass({
     render () {
         return (

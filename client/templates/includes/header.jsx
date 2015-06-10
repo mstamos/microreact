@@ -12,6 +12,7 @@ Header = React.createClass({
             userIsLoggedIn: Meteor.userId()
         }
     },
+    // This method called when a user press logout button
     logOut: function (event) {
         event.preventDefault();
         Meteor.logout();
@@ -37,7 +38,7 @@ Header = React.createClass({
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
                                 <li>{this.data.userIsLoggedIn ?
-                                    <a href="" onClick={this.logOut} >Sign Out</a> :
+                                    <a href="" onClick={this.logOut}>Sign Out</a> :
                                     <a href="/authentication">Sign In</a>}
                                 </li>
                             </ul>

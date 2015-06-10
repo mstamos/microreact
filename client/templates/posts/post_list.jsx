@@ -39,7 +39,7 @@ const PostItem = React.createClass({
 });
 
 /**
- * This componet renders a list of posts. Get all post and for each of them pass
+ * This component renders a list of posts. Get all post and for each of them pass
  * the props in PostItem decodeURIComponent
  *
  * Render

@@ -1,4 +1,9 @@
-var SignUp = React.createClass({
+/**
+ * This component renders a Sign Up section.
+ */
+const SignUp = React.createClass({
+    // This method gets the data from the inputs and make the appropriate checks.
+    // After that creates a new user and logged in him and redirect him at post list page
     createUser (event) {
         event.preventDefault();
         var userData = {
@@ -26,6 +31,7 @@ var SignUp = React.createClass({
                     if (error) {
                         console.log(error.message);
                     } else {
+                        // After successful loggin redirect user at post list page
                         FlowRouter.go("postList");
                     }
                 })
@@ -52,40 +58,44 @@ var SignUp = React.createClass({
     }
 });
 
-var SignIn = React.createClass({
-        signInUser: function (event) {
-            event.preventDefault();
-            var userData = {
-                username: this.refs.username.getDOMNode().value,
-                password: this.refs.password.getDOMNode().value
-            };
-            Meteor.loginWithPassword(userData.username, userData.password, function (err, result) {
-                if (err) {
-                    console.log(err.message);
-                } else {
-                    FlowRouter.go("postList");
-                    console.log("Login Done");
-                }
-            });
-        },
-        render()  {
-            return (
-                <form class="main form">
-                    <div class="form-group">
-                        <input type="text" ref="username"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" ref="password"/>
-                    </div>
-                    <button className="btn btn-default" onClick={this.signInUser}>Sing In</button>
-                </form>
-            )
-        }
-    })
-    ;
+/**
+ * This component renders a Sign In form. Get the values from inputs and login user.
+ * After the success on login redirect user at post list page.
+ */
+const SignIn = React.createClass({
+    // Get the values from the inputs and login user.
+    signInUser (event) {
+        event.preventDefault();
+        const userData = {
+            username: this.refs.username.getDOMNode().value,
+            password: this.refs.password.getDOMNode().value
+        };
+        Meteor.loginWithPassword(userData.username, userData.password, function (err, result) {
+            if (err) {
+                console.log(err.message);
+            } else {
+                FlowRouter.go("postList");
+                console.log("Login Done");
+            }
+        });
+    },
+    render()  {
+        return (
+            <form class="main form">
+                <div class="form-group">
+                    <input type="text" ref="username"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" ref="password"/>
+                </div>
+                <button className="btn btn-default" onClick={this.signInUser}>Sing In</button>
+            </form>
+        )
+    }
+});
 
 Registration = React.createClass({
-    getInitialState: function () {
+    getInitialState () {
         return {
             step: 1
         }
