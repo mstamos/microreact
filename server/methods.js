@@ -1,6 +1,7 @@
 Meteor.methods({
+    //We check if the username already exists
     "usernameExists": function (username) {
-        var userExists = Meteor.users.findOne({username:username});
+        var userExists = Meteor.users.findOne({username: username});
         if (!_.isEmpty(userExists)) {
             return true
         }
@@ -14,20 +15,16 @@ Meteor.methods({
         return false;
     },
     "registerUser": function (userData) {
+        check(userdata, {
+            username: String,
+            password: String,
+            email: String
+        });
+        if (_.isEmpty(userdata.username) || _.isEmpty(userData.email || _.isEmpty(userData.password))) {
+            throw new Meteor.Error(401,TAPi18n.__("not_empty"));
+        }
         return Accounts.createUser(
             userData)
-            //,
-            //function (err, result) {
-            //    if (err) {
-            //        if (err.message === 'Email already exists. [403]') {
-            //            console.log('We are sorry but this email is already used.');
-            //        } else {
-            //            console.log('We are sorry but something went wrong.');
-            //        }
-            //        throw (err);
-            //    } else {
-            //        console.log('Congrats new Meteorite, you\'re in!');
-            //    }
-            //});
+
     }
 });

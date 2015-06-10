@@ -2,14 +2,15 @@ const RegistrationInput = React.createClass({
     getValue (event) {
         event.preventDefault();
         this.props.getInputValue(
-          this.refs.regInput.getDOMNode().value
+            this.refs.regInput.getDOMNode().value
         );
     },
     render () {
         return (
             <div>
                 <label>{this.props.label}</label>
-                <input type="text" ref="regInput" onChange={this.getValue} value={this.props.defaultValue} placeholder={this.props.placeholder}/>
+                <input type={this.props.type} ref="regInput" onChange={this.getValue} value={this.props.defaultValue}
+                       placeholder={this.props.placeholder}/>
             </div>
         );
     }
@@ -18,11 +19,11 @@ const RegistrationInput = React.createClass({
 
 SignUp = React.createClass({
     getInitialState () {
-      return {
-              username: '',
-              email: '',
-              password: ''
-      }
+        return {
+            username: '',
+            email: '',
+            password: ''
+        }
     },
     saveUsername (username) {
         this.setState({
@@ -41,57 +42,58 @@ SignUp = React.createClass({
     },
     createUser (event) {
         event.preventDefault();
-        console.log(this.state);
-        Meteor.call("methods", this.state.username, function (error, result) {
-            if(!error) {
+        const userData = this.state;
+        Meteor.call("methods", userData.username, function (error, result) {
+            if (!error) {
                 if (result) {
                     throw new Meteor.Error(406, TAPi18n.__("user_exist"));
                 }
             }
         });
-        //if(!this.props.isEmail(this.state.email)) {
-        //    throw new Meteor.Error(406, TAPi18n.__("not_valid_email"));
-        //}
-        if(!this.props.isValidPassword(this.state.password)) {
+        if (!this.props.isEmail(userData.email)) {
+            throw new Meteor.Error(406, TAPi18n.__("not_valid_email"));
+        }
+        if (!this.props.isValidPassword(userData.password)) {
             throw new Meteor.Error(406, TAPi18n.__("not_valid_password"));
         }
-        var userData= this.state;
-        var userData = _.extend(userData, {
-            profile:{
-
-            }
-        });
-        console.log(userData);
         Meteor.call("registerUser", userData, function (error, result) {
             if (!error) {
                 console.log("Welcome abord");
+                Meteor.loginWithPassword(userData.username, userData.password, function (error) {
+                    if (error) {
+                        console.log(error.message);
+                        FlowRouter.go("home");
+                    }
+                })
             } else {
                 console.log("Something went wrong");
+                console.log(error.message);
             }
         })
-
     },
     render () {
         return (
             <div>
                 <RegistrationInput
-                    defaultValue = {this.state.username}
+                    defaultValue={this.state.username}
                     label={"Username"}
                     placeholder={"Your username"}
                     getInputValue={this.saveUsername}
-                />
+                    type={"text"}
+                    />
                 <RegistrationInput
-                    defaultValue = {this.state.email}
+                    defaultValue={this.state.email}
                     label={"Email"}
                     placeholder={"Your email"}
                     getInputValue={this.saveEmail}
-
+                    type={"text"}
                     />
                 <RegistrationInput
-                    defaultValue = {this.state.password}
+                    defaultValue={this.state.password}
                     label={"Password"}
                     placeholder={"Your password"}
                     getInputValue={this.savePassword}
+                    type={"password"}
 
                     />
                 <button onClick={this.createUser}>Sign Up</button>
@@ -101,9 +103,9 @@ SignUp = React.createClass({
 });
 
 Registration = React.createClass({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
-            step : 1
+            step: 1
         }
     },
     isEmail (value) {
@@ -122,11 +124,11 @@ Registration = React.createClass({
         return true;
     },
     render () {
-        switch(this.state.step) {
+        switch (this.state.step) {
             case 1:
                 return <SignUp
-                        isEmail={this.isEmail}
-                        isValidPassword={this.isValidPassword}
+                    isEmail={this.isEmail}
+                    isValidPassword={this.isValidPassword}
                     />
             case 2:
                 return <SurveyFields />
@@ -137,3 +139,10 @@ Registration = React.createClass({
         }
     }
 });
+
+Test = React.createClass({
+    render () {
+        return {}
+    }
+});
+

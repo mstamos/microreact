@@ -10,7 +10,7 @@ twbs:bootstrap
 reactjs:react
 reactive-var
 momentjs:moment
-useraccounts:core
 
 tap:i18n
 accounts-password
+check
