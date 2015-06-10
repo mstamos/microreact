@@ -1,14 +1,13 @@
-FlowRouter.route('/sign-in', {
-    name: "sign-in",
+FlowRouter.route('/authentication', {
+    name: "authentication",
     action: function (params) {
-
+        React.render(<Registration />, document.getElementById("yield-section"));
     }
 });
 
 FlowRouter.route('/sign-up', {
     name: 'sign-up',
     action: function (params) {
-        React.render(<Registration />, document.getElementById("yield-section"));
     }
 });
 

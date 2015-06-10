@@ -7,10 +7,10 @@
 meteor-platform
 meteorhacks:flow-router
 twbs:bootstrap
-reactjs:react
 reactive-var
 momentjs:moment
 
 tap:i18n
 accounts-password
 check
+react

@@ -46,14 +46,14 @@ const PostItem = React.createClass({
  *      PostItem
  */
 PostList = React.createClass({
-    mixins: [ReactMeteor.Mixin],
-    getMeteorState () {
+    mixins: [MeteorDataMixin],
+    trackMeteorData (props, state) {
         return {
             allPosts: Posts.find().fetch()
         }
     },
     render () {
-        const posts = this.state.allPosts.map(function (post) {
+        const posts = this.data.allPosts.map(function (post) {
             //Calculates for each post the number of comments
             const commentsCounter = Comments.find({postId: post._id}).count();
             return <PostItem
