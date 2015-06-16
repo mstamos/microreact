@@ -1,5 +1,5 @@
 FlowRouter.route('/', {
-   name: "postList",
+    name: "postList",
     subscriptions: function (params) {
         this.register("posts", Meteor.subscribe("posts"))
     },
@@ -8,9 +8,22 @@ FlowRouter.route('/', {
     }
 });
 
+FlowRouter.route('/posts/:_id', {
+    name: "postPage",
+    subscriptions: function (params) {
+        this.register("post", Meteor.subscribe("post", params._id));
+        this.register("comments", Meteor.subscribe("comments", params._id))
+    },
+    action (params) {
+        React.render ( <PostItem
+                        _id={params._id}/>,
+            document.getElementById("yield-section"));
+    }
+});
+
 FlowRouter.route('/submit', {
     name: "postSubmit",
-    action: function () {
+    action: function (params) {
         React.render(<PostSubmit />, document.getElementById("yield-section") );
     }
 });
