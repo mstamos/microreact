@@ -14,3 +14,10 @@ FlowRouter.route('/submit', {
         React.render(<PostSubmit />, document.getElementById("yield-section") );
     }
 });
+
+FlowRouter.route('/authentication', {
+    name: "authentication",
+    action: function (params) {
+        React.render(<Registration />, document.getElementById("yield-section"));
+    }
+});
