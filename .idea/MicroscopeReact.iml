@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.meteor/local" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/leaderboard/.meteor/local" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/react-todos/.meteor/local" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,3 +1,5 @@
+const SIGN_IN_NUMBER = 1;
+const SIGN_UP_NUMBER = 2;
 /**
  * This component renders a Sign Up section.
  */
@@ -41,18 +43,24 @@ const SignUp = React.createClass({
             }
         })
     },
+    cancelRegister (event) {
+        event.preventDefault();
+        this.props.onUserClick(SIGN_IN_NUMBER);
+    },
     render () {
         return (
             <div>
-                <label>Name</label>
-                <input type="text" ref="username"/>
-
-                <label>Password</label>
-                <input type="password" ref="password"/>
-
-                <label>Email</label>
-                <input type="email" ref="email"/>
-                <button onClick={this.createUser}>Sign Up</button>
+                <div>
+                    <input type="text" ref="username" placeholder="Username"/>
+                </div>
+                <div>
+                    <input type="password" ref="password" placeholder="Password"/>
+                </div>
+                <div>
+                    <input type="email" ref="email" placeholder="Email"/>
+                </div>
+                <button className="btn btn-default" onClick={this.createUser}>Sign Up</button>
+                <button className="btn btn-default" onClick={this.cancelRegister}>Cancel</button>
             </div>
         );
     }
@@ -63,6 +71,10 @@ const SignUp = React.createClass({
  * After the success on login redirect user at post list page.
  */
 const SignIn = React.createClass({
+    register (event) {
+        event.preventDefault();
+        this.props.onUserClick(SIGN_UP_NUMBER);
+    },
     // Get the values from the inputs and login user.
     signInUser (event) {
         event.preventDefault();
@@ -83,12 +95,14 @@ const SignIn = React.createClass({
         return (
             <form class="main form">
                 <div class="form-group">
-                    <input type="text" ref="username"/>
+                    <input type="text" ref="username" placeholder="Username"/>
                 </div>
                 <div class="form-group">
-                    <input type="password" ref="password"/>
+                    <input type="password" ref="password" placeholder="Password"/>
                 </div>
+
                 <button className="btn btn-default" onClick={this.signInUser}>Sing In</button>
+                <button className="btn btn-default" onClick={this.register}>Resigster</button>
             </form>
         )
     }
@@ -97,15 +111,24 @@ const SignIn = React.createClass({
 Registration = React.createClass({
     getInitialState () {
         return {
-            step: 1
+            registrationViews: 1
         }
     },
+    onChangeViews (numberOfView) {
+        this.setState({
+            registrationViews: numberOfView
+        });
+    },
     render () {
-        switch (this.state.step) {
+        switch (this.state.registrationViews) {
             case 1:
-                return <SignIn/>
+                return <SignIn
+                            onUserClick={this.onChangeViews}
+                        />
             case 2:
-                return <SignUp />
+                return <SignUp
+                            onUserClick={this.onChangeViews}
+                        />
             case 3:
                 return <Confirmation />
             case 4:
