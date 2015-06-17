@@ -15,7 +15,7 @@ FlowRouter.route('/posts/:_id', {
         this.register("comments", Meteor.subscribe("comments", params._id))
     },
     action (params) {
-        React.render ( <PostItem
+        React.render ( <PostPage
                         _id={params._id}/>,
             document.getElementById("yield-section"));
     }

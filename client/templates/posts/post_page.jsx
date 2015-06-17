@@ -1,0 +1,77 @@
+PostPage = React.createClass({
+    mixins: [MeteorDataMixin],
+    trackMeteorData (props, state) {
+        return {
+            postData: this.getData(),
+            comments: Comments.find({postId: this.props._id}),
+            userIsLogged: Meteor.userId()
+        }
+    },
+    getData () {
+      if (FlowRouter.subsReady("post")) {
+          return Posts.findOne();
+      } else {
+          return "Loading..."
+      }
+    },
+    submitComment (commentText) {
+        var comment = {
+            body: commentText,
+            postId: this.props._id
+        };
+
+        var errors = {};
+        if (! comment.body) {
+            errors.body = "Please write some content";
+            return Session.set('commentSubmitErrors', errors);
+        }
+
+        Meteor.call('commentInsert', comment, function(error, commentId) {
+            if (error){
+                throwError(error.reason);
+            } else {
+                //$body.val('');
+            }
+        });
+    },
+    render () {
+        let post = this.data.postData;
+        if (FlowRouter.subsReady()) {
+            let renderedComments = this.data.comments.map(function (comment) {
+               return <CommentItem
+                   key={comment._id}
+                   body={comment.body}
+                   author={comment.author}
+                   submittedText={comment.submitted}
+                   />
+            });
+            return (
+                <div className="post-page page">
+                    <PostItem
+                        key={post._id}
+                        _id={post._id}
+                        title={post.title}
+                        url={post.url}
+                        author={post.author}
+                        commentsCount={post.commentsCount}
+                        />
+                    <ul className="comments">
+                        {renderedComments}
+                    </ul>
+                    {this.data.userIsLogged ?
+                        <CommentSubmit
+                            onCommentSubmit={this.submitComment}/> :
+                        <p>Please log in to leave a comment.</p>
+                    }
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <Loading/>
+                </div>
+            )
+        }
+
+    }
+});
