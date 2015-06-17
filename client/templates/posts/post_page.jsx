@@ -8,7 +8,7 @@ PostPage = React.createClass({
         }
     },
     getData () {
-        if (FlowRouter.subsReady("post")) {
+        if (FlowRouter.subsReady()) {
             return Posts.findOne();
         } else {
             return "Loading..."

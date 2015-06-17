@@ -22,9 +22,9 @@ body {
 
 .navbar {
   margin-bottom: 10px; }
-  /* line 32, ../sass/style.scss */
-  .navbar .navbar-inner {
-    border-radius: 0px 0px 3px 3px; }
+/* line 32, ../sass/style.scss */
+.navbar .navbar-inner {
+  border-radius: 0px 0px 3px 3px; }
 
 #spinner {
   height: 300px; }
@@ -35,61 +35,61 @@ body {
   *zoom: 1;
   position: relative;
   opacity: 1; }
-  .post:before, .post:after {
-    content: "";
-    display: table; }
-  .post:after {
-    clear: both; }
-  .post.invisible {
-    opacity: 0; }
-  .post.instant {
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    transition: none; }
-  .post.animate{
-    -webkit-transition: all 300ms 0ms;
-    -moz-transition: all 300ms 0ms ease-in;
-    -o-transition: all 300ms 0ms ease-in;
-    transition: all 300ms 0ms ease-in; }
-  .post .upvote {
-    display: block;
-    margin: 7px 12px 0 0;
-    float: left; }
-  .post .post-content {
-    float: left; }
-    .post .post-content h3 {
-      margin: 0;
-      line-height: 1.4;
-      font-size: 18px; }
-      .post .post-content h3 a {
-        display: inline-block;
-        margin-right: 5px; }
-      .post .post-content h3 span {
-        font-weight: normal;
-        font-size: 14px;
-        display: inline-block;
-        color: #aaaaaa; }
-    .post .post-content p {
-      margin: 0; }
-  .post .discuss {
-    display: block;
-    float: right;
-    margin-top: 7px; }
+.post:before, .post:after {
+  content: "";
+  display: table; }
+.post:after {
+  clear: both; }
+.post.invisible {
+  opacity: 0; }
+.post.instant {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none; }
+.post.animate{
+  -webkit-transition: all 300ms 0ms;
+  -moz-transition: all 300ms 0ms ease-in;
+  -o-transition: all 300ms 0ms ease-in;
+  transition: all 300ms 0ms ease-in; }
+.post .upvote {
+  display: block;
+  margin: 7px 12px 0 0;
+  float: left; }
+.post .post-content {
+  float: left; }
+.post .post-content h3 {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 18px; }
+.post .post-content h3 a {
+  display: inline-block;
+  margin-right: 5px; }
+.post .post-content h3 span {
+  font-weight: normal;
+  font-size: 14px;
+  display: inline-block;
+  color: #aaaaaa; }
+.post .post-content p {
+  margin: 0; }
+.post .discuss {
+  display: block;
+  float: right;
+  margin-top: 7px; }
 
 .comments {
   list-style-type: none;
   margin: 0; }
-  .comments li h4 {
-    font-size: 16px;
-    margin: 0; }
-    .comments li h4 .date {
-      font-size: 12px;
-      font-weight: normal; }
-    .comments li h4 a {
-      font-size: 12px; }
-  .comments li p:last-child {
-    margin-bottom: 0; }
+.comments li h4 {
+  font-size: 16px;
+  margin: 0; }
+.comments li h4 .date {
+  font-size: 12px;
+  font-weight: normal; }
+.comments li h4 a {
+  font-size: 12px; }
+.comments li p:last-child {
+  margin-bottom: 0; }
 
 .dropdown-menu span {
   display: block;
@@ -107,9 +107,9 @@ body {
   height: 60px;
   line-height: 60px;
   margin-bottom: 10px; }
-  .load-more:hover {
-    text-decoration: none;
-    background: rgba(0, 0, 0, 0.1); }
+.load-more:hover {
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.1); }
 
 .posts .spinner-container{
   position: relative;
@@ -149,9 +149,9 @@ body {
   pointer-events: none;
 }
 .alert {
-          animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  animation: fadeOut 2700ms ease-in 0s 1 forwards;
   -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
-     -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+  -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
   width: 250px;
   float: right;
   clear: both;
