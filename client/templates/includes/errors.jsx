@@ -1,4 +1,12 @@
+/**
+ * This component renders an error
+ * Props
+ *      message     String      The message of the error
+ */
 let Error = React.createClass({
+    propsTypes: {
+      message: React.PropTypes.string.isRequired
+    },
     render () {
         return (
             <div>
@@ -11,6 +19,10 @@ let Error = React.createClass({
     }
 });
 
+/**
+ * This component renders a list of errors
+ *
+ */
 ErrorsList = React.createClass({
     mixins: [MeteorDataMixin],
     trackMeteorData (props, state) {
