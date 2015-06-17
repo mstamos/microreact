@@ -8,29 +8,25 @@ PostPage = React.createClass({
         }
     },
     getData () {
-      if (FlowRouter.subsReady("post")) {
-          return Posts.findOne();
-      } else {
-          return "Loading..."
-      }
+        if (FlowRouter.subsReady("post")) {
+            return Posts.findOne();
+        } else {
+            return "Loading..."
+        }
     },
     submitComment (commentText) {
-        var comment = {
+        let comment = {
             body: commentText,
             postId: this.props._id
         };
-
-        var errors = {};
-        if (! comment.body) {
+        let errors = {};
+        if (!comment.body) {
             errors.body = "Please write some content";
             return Session.set('commentSubmitErrors', errors);
         }
-
-        Meteor.call('commentInsert', comment, function(error, commentId) {
-            if (error){
+        Meteor.call('commentInsert', comment, function (error, commentId) {
+            if (error) {
                 throwError(error.reason);
-            } else {
-                //$body.val('');
             }
         });
     },
@@ -38,12 +34,12 @@ PostPage = React.createClass({
         let post = this.data.postData;
         if (FlowRouter.subsReady()) {
             let renderedComments = this.data.comments.map(function (comment) {
-               return <CommentItem
-                   key={comment._id}
-                   body={comment.body}
-                   author={comment.author}
-                   submittedText={comment.submitted}
-                   />
+                return <CommentItem
+                    key={comment._id}
+                    body={comment.body}
+                    author={comment.author}
+                    submittedText={comment.submitted}
+                    />
             });
             return (
                 <div className="post-page page">

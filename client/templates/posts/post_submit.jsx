@@ -15,7 +15,7 @@ const PostInput = React.createClass({
         const errorClassName = "form-group " + this.props.errorclassName;
         return (
             <div className={errorClassName}>
-                <label className="control-label" for={this.props.title.toLowerCase()}>{this.props.title}</label>
+                <label className="control-label" htmlFor={this.props.title.toLowerCase()}>{this.props.title}</label>
 
                 <div className="controls">
                     <input name={this.props.title.toLowerCase()} id={this.props.title.toLowerCase()} type="text"
@@ -35,8 +35,8 @@ PostSubmit = React.createClass({
     formSubmition (event) {
         event.preventDefault();
         var post = {
-            url: $(e.target).find('[name=url]').val(),
-            title: $(e.target).find('[name=title]').val()
+            url: event.target.url.value,
+            title: event.target.title.value
         };
 
         var errors = validatePost(post);
@@ -52,7 +52,7 @@ PostSubmit = React.createClass({
             if (result.postExists)
                 throwError('This link has already been posted');
 
-            //Router.go('postPage', {_id: result._id});
+            FlowRouter.go(`/posts/${ result._id }`);
         });
     },
     render () {
