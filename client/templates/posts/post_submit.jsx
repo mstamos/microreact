@@ -75,8 +75,8 @@ PostSubmit = React.createClass({
                 return throwError(error.reason);
 
             // show this result but route anyway
-            //if (result.postExists)
-                //throwError('This link has already been posted');
+            if (result.postExists)
+                throwError('This link has already been posted');
 
             FlowRouter.go(`/posts/${ result._id }`);
         });
