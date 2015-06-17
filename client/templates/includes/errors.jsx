@@ -20,10 +20,10 @@ ErrorsList = React.createClass({
     },
     render () {
         let appErrors = this.data.errors.map(function (error) {
-           return <Error
-                    key={error._id}
-                    message={error.message}
-               />
+            return <Error
+                key={error._id}
+                message={error.message}
+                />
         });
         return (
             <div>

@@ -35,12 +35,12 @@ PostSubmit = React.createClass({
     // We set 4 different variables 2 for each input
     // The one is for the message and the other for the css class
     getInitialState () {
-      return {
-          errorsTitle: "",
-          errorsTitleClass: "",
-          errorsUrl: "",
-          errorsUrlClass: ""
-      }
+        return {
+            errorsTitle: "",
+            errorsTitleClass: "",
+            errorsUrl: "",
+            errorsUrlClass: ""
+        }
     },
     formSubmition (event) {
         event.preventDefault();
@@ -56,13 +56,13 @@ PostSubmit = React.createClass({
         // If we didn't fill any of the inputs then we return a message and an error class
         if (!_.isEmpty(fieldsErrors)) {
             if (fieldsErrors.title) {
-                 this.setState({
+                this.setState({
                     errorsTitle: fieldsErrors.title,
                     errorsTitleClass: "has-error"
                 });
             }
             if (fieldsErrors.url) {
-                 this.setState({
+                this.setState({
                     errorsUrl: fieldsErrors.url,
                     errorsUrlClass: "has-error"
                 });
@@ -87,14 +87,14 @@ PostSubmit = React.createClass({
                 <PostInput
                     title={"Title"}
                     placeholder={"Name your post"}
-                    errorClassName= {this.state.errorsTitleClass}
-                    errorMessage= {this.state.errorsTitle}
+                    errorClassName={this.state.errorsTitleClass}
+                    errorMessage={this.state.errorsTitle}
                     />
                 <PostInput
                     title={"URL"}
                     placeholder={"Your URL"}
-                    errorClassName= {this.state.errorsUrlClass}
-                    errorMessage= {this.state.errorsUrl}
+                    errorClassName={this.state.errorsUrlClass}
+                    errorMessage={this.state.errorsUrl}
                     />
                 <input type="submit" value="Submit" className="btn btn-primary"/>
             </form>

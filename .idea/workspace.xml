@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36f7853f-df6f-435f-8e58-8aee9b0743a9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/startup.jsx" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/comments/commentItem.jsx" afterPath="$PROJECT_DIR$/client/templates/comments/comment_item.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/comments/commentSubmit.jsx" afterPath="$PROJECT_DIR$/client/templates/comments/comment_submit.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/errors.jsx" afterPath="$PROJECT_DIR$/client/templates/includes/errors.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/posts/post_item.jsx" afterPath="$PROJECT_DIR$/client/templates/posts/post_item.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/posts/post_list.jsx" afterPath="$PROJECT_DIR$/client/templates/posts/post_list.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MicroscopeReact.iws" />
@@ -64,11 +60,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="post_item.jsx" pinned="false" current-in-tab="true">
+          <file leaf-file-name="post_item.jsx" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/posts/post_item.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.28">
-                  <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="post_list.jsx" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/posts/post_list.jsx">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.624">
+                  <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -107,7 +113,6 @@
         <option value="$PROJECT_DIR$/lib/collections/comments.js" />
         <option value="$PROJECT_DIR$/lib/collections/post.js" />
         <option value="$PROJECT_DIR$/client/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/client/templates/posts/post_list.jsx" />
         <option value="$PROJECT_DIR$/client/templates/posts/post_page.jsx" />
         <option value="$PROJECT_DIR$/lib/routes/routers.jsx" />
         <option value="$PROJECT_DIR$/client/helpers/error.js" />
@@ -118,6 +123,7 @@
         <option value="$PROJECT_DIR$/client/templates/includes/errors.jsx" />
         <option value="$PROJECT_DIR$/client/templates/comments/comment_submit.jsx" />
         <option value="$PROJECT_DIR$/client/templates/posts/post_item.jsx" />
+        <option value="$PROJECT_DIR$/client/templates/posts/post_list.jsx" />
       </list>
     </option>
   </component>
@@ -909,14 +915,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/posts/post_list.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.625">
@@ -999,8 +997,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/posts/post_item.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/posts/post_list.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.624">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
           <folding />
         </state>
       </provider>

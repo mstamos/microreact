@@ -6,7 +6,7 @@
  */
 CommentSubmit = React.createClass({
     propTypes: {
-      onCommentSubmit: React.PropTypes.func.isRequired
+        onCommentSubmit: React.PropTypes.func.isRequired
     },
     submitComment (event) {
         event.preventDefault();

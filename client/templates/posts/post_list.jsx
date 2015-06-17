@@ -13,16 +13,16 @@ PostList = React.createClass({
         }
     },
     render () {
+        // Iterate through all posts and create a post item for each of them
         let posts = this.data.allPosts.map(function (post) {
-        //Calculates for each post the number of comments
-        return <PostItem
-            key={post._id}
-            _id={post._id}
-            title={post.title}
-            url={post.url}
-            author={post.author}
-            commentsCount={post.commentsCount}
-            />
+            return <PostItem
+                key={post._id}
+                _id={post._id}
+                title={post.title}
+                url={post.url}
+                author={post.author}
+                commentsCount={post.commentsCount}
+                />
         });
         return (
             <div className="posts page">

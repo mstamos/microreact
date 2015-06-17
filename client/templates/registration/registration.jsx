@@ -123,12 +123,12 @@ Registration = React.createClass({
         switch (this.state.registrationViews) {
             case 1:
                 return <SignIn
-                            onUserClick={this.onChangeViews}
-                        />
+                    onUserClick={this.onChangeViews}
+                    />
             case 2:
                 return <SignUp
-                            onUserClick={this.onChangeViews}
-                        />
+                    onUserClick={this.onChangeViews}
+                    />
             case 3:
                 return <Confirmation />
             case 4:
