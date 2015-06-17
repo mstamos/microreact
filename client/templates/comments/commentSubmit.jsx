@@ -1,6 +1,13 @@
+/**
+ * This component renders an area in which users can add a comment
+ * Props
+ *       submitComment      Function    We call this function from the parent component to add into
+ *                                      Comments collection the new comment
+ */
 CommentSubmit = React.createClass({
     submitComment (event) {
         event.preventDefault();
+        // We call the parent function to add the new comment
         this.props.onCommentSubmit(event.target.body.value);
         event.target.body.value = "";
     },
