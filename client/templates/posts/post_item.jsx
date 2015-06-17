@@ -14,12 +14,13 @@ PostItem = React.createClass({
         author: React.PropTypes.string.isRequired,
         commentsCount: React.PropTypes.number.isRequired
     },
-    //This function get a url and return the domain
+    // This function get a url and return the domain
     getDomain (url) {
         let a = document.createElement('a');
         a.href = url;
         return a.hostname;
     },
+    // This function called when discussion button clicked and redirect us into post
     showPost (event) {
         event.preventDefault();
         FlowRouter.go(`/posts/${ this.props._id }`);

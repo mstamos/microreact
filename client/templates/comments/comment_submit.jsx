@@ -5,6 +5,9 @@
  *                                      Comments collection the new comment
  */
 CommentSubmit = React.createClass({
+    propTypes: {
+      onCommentSubmit: React.PropTypes.func.isRequired
+    },
     submitComment (event) {
         event.preventDefault();
         // We call the parent function to add the new comment
