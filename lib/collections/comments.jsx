@@ -1,7 +1,7 @@
 Comments = new Mongo.Collection("comments");
 
 Meteor.methods({
-    commentInsert: function(commentAttributes) {
+    commentInsert (commentAttributes) {
         check(this.userId, String);
         check(commentAttributes, {
             postId: String,

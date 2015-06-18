@@ -1,8 +1,8 @@
 Posts = new Mongo.Collection("posts");
 
 Posts.allow({
-    update: function(userId, post) { return ownsDocument(userId, post); },
-    remove: function(userId, post) { return ownsDocument(userId, post); },
+    update (userId, post) { return ownsDocument(userId, post); },
+    remove (userId, post) { return ownsDocument(userId, post); },
 });
 
 validatePost = function (post) {
@@ -18,7 +18,7 @@ validatePost = function (post) {
 }
 
 Meteor.methods({
-    postInsert: function(postAttributes) {
+    postInsert (postAttributes) {
         check(this.userId, String);
         check(postAttributes, {
             title: String,
