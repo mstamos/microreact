@@ -26,15 +26,17 @@ PostItem = React.createClass({
         FlowRouter.go(`/posts/${ this.props._id }`);
     },
     render () {
+        let owner = this.props.author === Meteor.user().username;
+        let editUrl = `posts/${ this.props._id }/edit`;
         return (
             <div className="post">
                 <div className="post-content">
                     <h3><a href={this.props.url}>{this.props.title}</a><span>{this.getDomain(this.props.url)}</span>
                     </h3>
-
                     <p>
                         submitted by {this.props.author},
                         <a href=""> {this.props.commentsCount} comments</a>
+                        {owner && <a href={editUrl}> Edit </a>}
                     </p>
                 </div>
                 <a href="" className="discuss btn btn-default" onClick={this.showPost}>Discuss</a>
