@@ -1,7 +1,0 @@
-{
-  "username": "Username",
-  "not_valid_email": "Not a valid email",
-  "password_six_char": "Password must have at least 6 characters",
-  "user_already_exists": "User already exists",
-  "signIn": "Sign In"
-}

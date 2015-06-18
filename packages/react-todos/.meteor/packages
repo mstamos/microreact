@@ -5,8 +5,8 @@
 # but you can also edit it by hand.
 
 meteor-platform
-meteorhacks:flow-router
-twbs:bootstrap
-
+insecure
+less
 accounts-password
 react
+reactive-var
