@@ -27,7 +27,7 @@ FlowRouter.route('/posts/:_id/edit', {
     action (params) {
         React.render(<PostEdit _id={params._id}/>, document.getElementById("yield-section"))
     }
-})
+});
 
 FlowRouter.route('/submit', {
     name: "postSubmit",
@@ -42,3 +42,9 @@ FlowRouter.route('/authentication', {
         React.render(<Registration />, document.getElementById("yield-section"));
     }
 });
+
+FlowRouter.notFound = {
+    action () {
+        React.render(<NotFound />, document.getElementById("yield-section"));
+    }
+};

@@ -43,6 +43,12 @@ PostInput = React.createClass({
  *
  */
 PostSubmit = React.createClass({
+    mixins: [MeteorDataMixin],
+    trackMeteorData (props, state) {
+        return {
+            userIsLogged: Meteor.userId()
+        }
+    },
     // We set 4 different variables 2 for each input
     // The one is for the message and the other for the css class
     getInitialState () {
@@ -103,39 +109,44 @@ PostSubmit = React.createClass({
             FlowRouter.go(`/posts/${ result._id }`);
         });
     },
-    handleInputChange ( prop, val) {
+    handleInputChange (prop, val) {
         var stateOb = {
-            urlValue : val
+            urlValue: val
         };
         if (prop === "title") {
             stateOb = {
-                titleValue : val
+                titleValue: val
             };
         }
         this.setState(stateOb);
         console.log(this.state.titleValue);
     },
     render () {
-        return (
-            <form className="main form page" onSubmit={this.formSubmition}>
-                <PostInput
-                    title={"Title"}
-                    placeholder={"Name your post"}
-                    errorClassName={this.state.errorsTitleClass}
-                    errorMessage={this.state.errorsTitle}
-                    onInputChange={this.handleInputChange.bind(null, "title")}
-                    value={this.state.titleValue}
-                    />
-                <PostInput
-                    title={"URL"}
-                    placeholder={"Your URL"}
-                    errorClassName={this.state.errorsUrlClass}
-                    errorMessage={this.state.errorsUrl}
-                    onInputChange={this.handleInputChange.bind(null, "url")}
-                    value={this.state.urlValue}
-                    />
-                <input type="submit" value="Submit" className="btn btn-primary"/>
-            </form>
-        );
+        if (this.data.userIsLogged) {
+            return (
+                <form className="main form page" onSubmit={this.formSubmition}>
+                    <PostInput
+                        title={"Title"}
+                        placeholder={"Name your post"}
+                        errorClassName={this.state.errorsTitleClass}
+                        errorMessage={this.state.errorsTitle}
+                        onInputChange={this.handleInputChange.bind(null, "title")}
+                        value={this.state.titleValue}
+                        />
+                    <PostInput
+                        title={"URL"}
+                        placeholder={"Your URL"}
+                        errorClassName={this.state.errorsUrlClass}
+                        errorMessage={this.state.errorsUrl}
+                        onInputChange={this.handleInputChange.bind(null, "url")}
+                        value={this.state.urlValue}
+                        />
+                    <input type="submit" value="Submit" className="btn btn-primary"/>
+                </form>
+            );
+        } else {
+            React.render(<AccessDenied/>, document.getElementById("yield-section"));
+        }
+
     }
 });

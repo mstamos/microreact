@@ -26,7 +26,11 @@ PostItem = React.createClass({
         FlowRouter.go(`/posts/${ this.props._id }`);
     },
     render () {
-        let owner = this.props.author === Meteor.user().username;
+        var owner= false;
+        //We check if the user exists. If exists then we check if he is the owner of the post
+        if (Meteor.userId()) {
+            owner = this.props.author === Meteor.user().username;
+        }
         let editUrl = `posts/${ this.props._id }/edit`;
         return (
             <div className="post">
