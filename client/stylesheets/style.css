@@ -221,3 +221,9 @@ body {
     margin-bottom: 5px;
     pointer-events: auto;
 }
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}

@@ -1,3 +1,12 @@
+/**
+ * This component renders the post page.
+ * Render
+ *          PostItem
+ *          CommentItem         A list of comments
+ *          CommentSubmit       A component to submit new comment
+ * Props
+ *          _id     String  Post's id
+ */
 PostPage = React.createClass({
     mixins: [MeteorDataMixin],
     trackMeteorData (props, state) {

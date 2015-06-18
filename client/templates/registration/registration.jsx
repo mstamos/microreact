@@ -33,8 +33,8 @@ const SignUp = React.createClass({
                     if (error) {
                         console.log(error.message);
                     } else {
-                        // After successful loggin redirect user at post list page
-                        FlowRouter.go("postList");
+                        // We go to the previous page
+                        window.history.back();
                     }
                 })
             } else {
@@ -49,19 +49,20 @@ const SignUp = React.createClass({
     },
     render () {
         return (
-            <div>
-                <div>
-                    <input type="text" ref="username" placeholder="Username"/>
+            <form className="main form page">
+                <div className="form-group">
+                    <input type="text" ref="username" placeholder="Username" className="form-control"/>
                 </div>
-                <div>
-                    <input type="password" ref="password" placeholder="Password"/>
+                <div className="form-group">
+                    <input type="password" ref="password" placeholder="Password" className="form-control"/>
                 </div>
-                <div>
-                    <input type="email" ref="email" placeholder="Email"/>
+                <div className="form-group">
+                    <input type="email" ref="email" placeholder="Email" className="form-control"/>
                 </div>
-                <button className="btn btn-default" onClick={this.createUser}>Sign Up</button>
-                <button className="btn btn-default" onClick={this.cancelRegister}>Cancel</button>
-            </div>
+                <button className="btn btn-primary" onClick={this.createUser}>Sign Up</button>
+                <div className="divider"/>
+                <button className="btn btn-primary" onClick={this.cancelRegister}>Cancel</button>
+            </form>
         );
     }
 });
@@ -86,28 +87,33 @@ const SignIn = React.createClass({
             if (err) {
                 console.log(err.message);
             } else {
-                FlowRouter.go("postList");
-                console.log("Login Done");
+                // We go to the previous page
+                window.history.back();
+
             }
         });
     },
     render()  {
         return (
-            <form class="main form">
-                <div class="form-group">
-                    <input type="text" ref="username" placeholder="Username"/>
+            <form className="main form page">
+                <div className="form-group">
+                    <input type="text" ref="username" placeholder="Username" className="form-control"/>
                 </div>
-                <div class="form-group">
-                    <input type="password" ref="password" placeholder="Password"/>
+                <div className="form-group">
+                    <input type="password" ref="password" placeholder="Password" className="form-control"/>
                 </div>
 
-                <button className="btn btn-default" onClick={this.signInUser}>Sing In</button>
-                <button className="btn btn-default" onClick={this.register}>Resigster</button>
+                <button className="btn btn-primary" onClick={this.signInUser}>Sing In</button>
+                <div className="divider"/>
+                <button className="btn btn-primary" onClick={this.register}>Resigster</button>
             </form>
         )
     }
 });
 
+/**
+ * In this component we change between SignIn and SignUp components.
+ */
 Registration = React.createClass({
     getInitialState () {
         return {
@@ -129,10 +135,6 @@ Registration = React.createClass({
                 return <SignUp
                     onUserClick={this.onChangeViews}
                     />
-            case 3:
-                return <Confirmation />
-            case 4:
-                return <Success />
         }
     }
 });
