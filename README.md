@@ -1,9 +1,9 @@
 # Meteor + React + FlowRouter + ES6
 
-I wanted to build something to learn Meteor and React and understand how they feat together. So I decide to
-rebuild [Microscope] (https://github.com/DiscoverMeteor/Microscope) the app with which I learned Meteor.
+I wanted to learn React with Meteor by building something. So I decide to
+rebuild [Microscope] (https://github.com/DiscoverMeteor/Microscope), the app with which I learned Meteor.
 [Microscope] (https://github.com/DiscoverMeteor/Microscope) is an app which someone can build it by reading the [Discover Meteor Book] (http://www.discovermeteor.com).
-In this try I rebuilt the app until chapter 10-5.
+In this version I rebuilt the app until chapter 10-5.
 
 The packages I use are:
 

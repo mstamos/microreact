@@ -13,18 +13,11 @@ const SignUp = React.createClass({
             password: this.refs.password.getDOMNode().value,
             email: this.refs.email.getDOMNode().value,
         }
-        Meteor.call("methods", userData.username, function (error, result) {
-            if (!error) {
-                if (result) {
-                    throw new Meteor.Error(406, TAPi18n.__("user_exist"));
-                }
-            }
-        });
         if (!Authentication.isEmail(userData.email)) {
-            throw new Meteor.Error(406, TAPi18n.__("not_valid_email"));
+            throw new Meteor.Error(406, "Not a valid email address");
         }
         if (!Authentication.isValidPassword(userData.password)) {
-            throw new Meteor.Error(406, TAPi18n.__("not_valid_password"));
+            throw new Meteor.Error(406,"Not Valid Password");
         }
         Meteor.call("registerUser", userData, function (error, result) {
             if (!error) {
