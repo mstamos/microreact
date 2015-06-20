@@ -3,7 +3,7 @@
 I wanted to learn React with Meteor by building something. So I decide to
 rebuild [Microscope] (https://github.com/DiscoverMeteor/Microscope), the app with which I learned Meteor.
 [Microscope] (https://github.com/DiscoverMeteor/Microscope) is an app which someone can build it by reading the [Discover Meteor Book] (http://www.discovermeteor.com).
-In this version I rebuilt the app until chapter 10-5.
+In this version I rebuilt the app until chapter 10-5 and you can find a dome [here](http://microreact.meteor.com).
 
 The packages I use are:
 
