@@ -13,4 +13,4 @@ The packages I use are:
 4. [accounts-password](https://atmospherejs.com/meteor/accounts-password)
 
 
-This repo doesn't officially supported by [Discover Meteor](http://www.discovermeteor.com)
+This repo doesn't officially supported by [Discover Meteor](http://www.discovermeteor.com).

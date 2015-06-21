@@ -1,9 +1,10 @@
 Header = React.createClass({
     mixins: [MeteorDataMixin],
-    getInitialState: function () {
-        return {
-            userIsLogged: Meteor.userId()
-        }
+    componentDidMount() {
+        // insert Blaze login buttons, see this if you do this a lot
+        // https://gist.github.com/emdagon/944472f39b58875045b6
+        var div = document.getElementById('loginContainer');
+        Blaze.renderWithData(Template.loginButtons, {align: 'right'}, div);
     },
     trackMeteorData(props, state) {
         // This method knows how to listen to Meteor's reactive data sources,
@@ -11,11 +12,6 @@ Header = React.createClass({
         return {
             userIsLoggedIn: Meteor.userId()
         }
-    },
-    // This method called when a user press logout button
-    logOut: function (event) {
-        event.preventDefault();
-        Meteor.logout();
     },
     render () {
         return (
@@ -37,10 +33,7 @@ Header = React.createClass({
                                 {this.data.userIsLoggedIn ? <li><a href="/submit">Submit Post</a></li> : ''}
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li>{this.data.userIsLoggedIn ?
-                                    <a href="" onClick={this.logOut}>Sign Out</a> :
-                                    <a href="/authentication">Sign In</a>}
-                                </li>
+                                <div id="loginContainer" />
                             </ul>
                         </div>
                     </div>
