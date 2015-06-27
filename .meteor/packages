@@ -9,5 +9,5 @@ meteorhacks:flow-router
 twbs:bootstrap
 
 accounts-password
-react
 accounts-ui
+react

@@ -6,8 +6,8 @@
  *      PostItem
  */
 PostList = React.createClass({
-    mixins: [MeteorDataMixin],
-    trackMeteorData (props, state) {
+    mixins: [ReactMeteorData],
+    getMeteorData () {
         return {
             allPosts: Posts.find().fetch()
         }

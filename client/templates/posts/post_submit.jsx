@@ -43,8 +43,8 @@ PostInput = React.createClass({
  *
  */
 PostSubmit = React.createClass({
-    mixins: [MeteorDataMixin],
-    trackMeteorData (props, state) {
+    mixins: [ReactMeteorData],
+    getMeteorData () {
         return {
             userIsLogged: Meteor.userId()
         }

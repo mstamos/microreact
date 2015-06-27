@@ -1,12 +1,12 @@
 Header = React.createClass({
-    mixins: [MeteorDataMixin],
+    mixins: [ReactMeteorData],
     componentDidMount() {
         // insert Blaze login buttons, see this if you do this a lot
         // https://gist.github.com/emdagon/944472f39b58875045b6
         var div = document.getElementById('loginContainer');
         Blaze.renderWithData(Template.loginButtons, {align: 'right'}, div);
     },
-    trackMeteorData(props, state) {
+    getMeteorData(props, state) {
         // This method knows how to listen to Meteor's reactive data sources,
         // Here we change userIsLoggedIn to prevent users to see on the header the Submit Post link
         return {

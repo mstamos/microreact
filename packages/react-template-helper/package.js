@@ -4,7 +4,7 @@ Package.describe({
   // Brief, one-line summary of the package.
   summary: 'Use React components in native Meteor templates',
   // URL to the Git repository containing the source code for this package.
-  git: 'https://github.com/meteor/react-packages/tree/master/react-template-helper',
+  git: 'https://github.com/meteor/react-packages/tree/master/packages/react-template-helper',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
@@ -13,7 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.use('templating');
   api.use('react-runtime');
-  api.addFiles(['react-template-helper.html', 'react-template-helper.js'], 'client');
+  api.addFiles(['react-template-helper.js'], 'client');
 });
 
 Package.onTest(function(api) {
@@ -24,6 +24,9 @@ Package.onTest(function(api) {
   api.use('test-helpers');
   api.use('jsx');
   api.addFiles([
+    // remove once Meteor 1.1.1 is released:
+    'event_simulation.js', // copied from METEOR/packages/test-helpers/
+
     'test-templates.html',
     'test-components.jsx',
     'test-templates.jsx',

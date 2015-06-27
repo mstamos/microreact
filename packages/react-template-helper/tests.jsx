@@ -1,3 +1,9 @@
+// Let us use `{{> ReactWithoutCompileTimeSiblingRestriction ...}}` inside
+// templates even not as the only thing inside their parent element. This
+// lets us test the run-time sibling detection code in this package
+// (that will be unnecessary once 1.1.1 is released).
+Template.ReactWithoutCompileTimeSiblingRestriction = Template.React;
+
 Tinytest.add(
   "react-template-helper-tests - must pass `component` into `{{> React}}`",
   function (test) {
@@ -20,36 +26,6 @@ Tinytest.add(
     fails(Template.UsesEmptyComponentTemplateWithSiblingElement);
     fails(Template.UsesEmptyComponentTemplateWithSiblingTextNode);
   });
-
-
-/**
-  Test disabled: The following detection may not be possible at
-  run-time. When React renders a component it clears its container
-  element, so any Blaze marker nodes used to know where to insert a new
-  element are lost. We get a "Failed to execute 'removeChild' on 'Node':
-  The node to be removed is not a child of this node."
-
-Tinytest.add(
-  "react-template-helper-tests - rendering react component with conditional sibling gives helpful error",
-  function (test) {
-    var tmpl = Template.UsesEmptyComponentTemplateWithConditionalSibling;
-    var sibling = new ReactiveVar(false);
-    tmpl.helpers({
-      sibling() {
-        return sibling.get();
-      }
-    });
-
-    // shouldn't throw
-    renderToDiv(tmpl);
-    Tracker.flush({_throwFirstError: true});
-
-    test.throws(function () {
-      sibling.set(true);
-      Tracker.flush({_throwFirstError: true});
-    }, /EmptyComponentTemplateWithoutContainerElement.*EmptyReactComponent.*only child/);
-  });
-*/
 
 Tinytest.add(
   "react-template-helper-tests - pass props into `{{> React}}`",

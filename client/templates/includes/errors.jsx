@@ -24,8 +24,8 @@ let Error = React.createClass({
  *
  */
 ErrorsList = React.createClass({
-    mixins: [MeteorDataMixin],
-    trackMeteorData (props, state) {
+    mixins: [ReactMeteorData],
+    getMeteorData () {
         return {
             errors: Errors.find().fetch()
         }

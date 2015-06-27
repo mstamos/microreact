@@ -1,11 +1,13 @@
-## MeteorDataMixin
+## ReactMeteorData
 
 ```
 Foo = React.createClass({
-  mixins: [MeteorDataMixin],
-  trackMeteorData(props, state) {
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    // do all your reactive data access here
     return {
       foo: Session.get('foo')
+      // (you can also access this.props and this.state here)
     };
   },
   render() {

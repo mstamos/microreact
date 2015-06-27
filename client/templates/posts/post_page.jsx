@@ -8,8 +8,8 @@
  *          _id     String  Post's id
  */
 PostPage = React.createClass({
-    mixins: [MeteorDataMixin],
-    trackMeteorData (props, state) {
+    mixins: [ReactMeteorData],
+    getMeteorData () {
         return {
             postData: this.getData(),
             comments: Comments.find({postId: this.props._id}),

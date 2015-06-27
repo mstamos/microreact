@@ -14,8 +14,8 @@ PostEdit = React.createClass({
             errorsUrlClass: ""
         }
     },
-    mixins: [MeteorDataMixin],
-    trackMeteorData (props, state) {
+    mixins: [ReactMeteorData],
+    getMeteorData () {
         return {
             postData: Posts.findOne({_id:this.props._id})
         }

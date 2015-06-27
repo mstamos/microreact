@@ -1,9 +1,9 @@
 <template name="ReactTemplateWithoutComponent">
-  {{> React}}
+  {{> ReactWithoutCompileTimeSiblingRestriction}}
 </template>
 
 <template name="EmptyComponentTemplateWithoutContainerElement">
-  {{> React component=emptyComponent}}
+  {{> ReactWithoutCompileTimeSiblingRestriction component=emptyComponent}}
 </template>
 
 <!-- used to test our error when rendering a react component with siblings -->
