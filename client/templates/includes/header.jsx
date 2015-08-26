@@ -30,7 +30,7 @@ Header = React.createClass({
                         </div>
                         <div className="collapse navbar-collapse" id="navigation">
                             <ul className="nav navbar-nav">
-                                {this.data.userIsLoggedIn ? <li><a href="/submit">Submit Post</a></li> : ''}
+                                {this.data.userIsLoggedIn ? <li><a href="/submit" className="submit-post-but">Submit Post</a></li> : ''}
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
                                 <div id="loginContainer" />

@@ -7,7 +7,7 @@ Feature: Static Pages
   Background:
     Given I am a new user
 
-  @dev
+
   Scenario: Visit home page
     When I navigate to "/"
     Then I should see the title on the header "Microscope"

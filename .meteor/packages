@@ -5,10 +5,10 @@
 # but you can also edit it by hand.
 
 meteor-platform
-meteorhacks:flow-router
 twbs:bootstrap
 
 accounts-password
 accounts-ui
 react
 xolvio:cucumber
+kadira:flow-router
