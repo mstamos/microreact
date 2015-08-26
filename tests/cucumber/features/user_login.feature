@@ -4,10 +4,14 @@ Feature: User Login
   I want to login
   So that I can create new post
 
-  @dev
-  Scenario: Login and go to submit page
-      Given I am logged in
-      When  I click "Submit Post" button
-      Then I should navigate to "/submit" page
-      And I should see the "Submit" button
+  Background: Login and already at submit page
+    Given I am logged in
+    When  I click "Submit Post" button
+    Then I should navigate to "/submit" page
+
+
+  Scenario: Should see the submit page 
+    And I should see the "Submit" button
+    
+
 

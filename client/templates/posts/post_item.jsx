@@ -35,7 +35,7 @@ PostItem = React.createClass({
         return (
             <div className="post">
                 <div className="post-content">
-                    <h3><a href={this.props.url}>{this.props.title}</a><span>{this.getDomain(this.props.url)}</span>
+                    <h3><a href={this.props.url} className="post-title">{this.props.title}</a><span>{this.getDomain(this.props.url)}</span>
                     </h3>
                     <p>
                         submitted by {this.props.author},
