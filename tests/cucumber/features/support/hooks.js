@@ -5,7 +5,7 @@
     module.exports = function () {
 
         this.Before(function (callback) {
-            console.log('running!');
+            // This code runs before every scenario
             this.server.call('addUser', {email: "miltos@example.com"}).then(callback);
         });
 
