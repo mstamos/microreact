@@ -141,7 +141,7 @@ PostSubmit = React.createClass({
                         onInputChange={this.handleInputChange.bind(null, "url")}
                         value={this.state.urlValue}
                         />
-                    <input type="submit" value="Submit" className="btn btn-primary"/>
+                    <input type="submit" value="Submit" className="btn btn-primary sub-post-but"/>
                 </form>
             );
         } else {
