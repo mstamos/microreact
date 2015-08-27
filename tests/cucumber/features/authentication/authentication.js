@@ -6,7 +6,10 @@
         // General variables
         var myEmail = "miltos@example.com";
         var pass = "passpass";
-        var signIn = "Sign in"
+        var signIn = "Sign in";
+        var wrongEmail = "stamos@example.com";
+        var wrongPass = "wrongPassword";
+        var invalidWord = "Invalid";
 
         // Npm modules
         var url = require("url");
@@ -20,6 +23,7 @@
                 waitForVisible(".container").
                 waitForVisible("#login-sign-in-link").
                 getText("#login-sign-in-link", function (error, text) {
+                    // We check if th link includes the words Sign in
                     return chai.expect(text).to.contain(signIn);
                 });
         });
@@ -64,5 +68,27 @@
                     return chai.expect(email).to.contain(myEmail);
                 });
         });
+
+        this.When(/^I enter my false authentication information$/, function () {
+            // We enter into sign in fields wrong information
+            return this.client.
+                waitForExist("#login-email").
+                // We set the values into email and password
+                setValue("#login-email", wrongEmail).
+                setValue("#login-password", wrongPass).
+
+                // We click the Sign In button
+                click('#login-buttons-password');
+        });
+
+        this.Then(/^I should see a user not found error$/, function () {
+            // We wait the User not found message to appear
+            return this.client.
+                waitForExist(".error-message").
+                getText(".error-message", function (error, message) {
+                    return chai.expect(message).to.contain("User not found");
+                });
+        });
+
     }
 })();
