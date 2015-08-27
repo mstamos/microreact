@@ -66,7 +66,7 @@ PostPage = React.createClass({
                     {this.data.userIsLogged ?
                         <CommentSubmit
                             onCommentSubmit={this.submitComment}/> :
-                        <p>Please log in to leave a comment.</p>
+                        <p id="login-leave-comment">Please log in to leave a comment.</p>
                     }
                 </div>
             );

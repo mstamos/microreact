@@ -6,6 +6,10 @@
         removePosts: function () {
             Posts.remove({});
         },
+        randomPost: function () {
+            var postId = Posts.findOne();
+            return postId._id;
+        },
         // We add some initial data
         addInitialPosts: function () {
             var now = new Date().getTime();

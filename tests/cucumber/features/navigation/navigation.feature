@@ -7,9 +7,13 @@ Feature: Restrict access to unregistered user
   Background:
     Given I am signed out
 
-
-  @dev
-  Scenario: An unregister user can not a new post
+  Scenario: An unregistered user cannot submit a new post
       Given I am on the home page
       When  I navigate to submit page
       Then  I should see an Access Denied message
+
+  @dev
+  Scenario: An unregistered user cannot add a comment
+      Given I am on the home page
+      When  I navigate to a post
+      Then  I should not be able to insert comment
