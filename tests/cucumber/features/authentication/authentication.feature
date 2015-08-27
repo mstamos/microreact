@@ -16,9 +16,21 @@ Feature: Allow user to login and logout
     Then  I should be logged in
 
 
-  @dev
   Scenario: A user cannot login with invalid information
     Given I am on the home page
     When  I click on sign in link
     And   I enter my false authentication information
     Then  I should see a user not found error
+
+  Scenario: A user cannot login with invalid email address
+    Given I am on the home page
+    When  I click on sign in link
+    And   I enter my invalid email address
+    Then  I should see an invalid email error message
+
+  @dev
+  Scenario: A user connot login with invalid password
+    Given I am on the home page
+    When  I click on sign in link
+    And   I enter my invalid password
+    Then  I should see an incorrect password error message

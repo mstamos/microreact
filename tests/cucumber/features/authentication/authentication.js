@@ -14,6 +14,11 @@
         // Npm modules
         var url = require("url");
 
+
+        /**
+         *  Scenario: A user can login with valid information
+         */
+
         this.Given(/^I am signed out$/, function (callback) {
             return this.client.
                 // We navigate into home page
@@ -69,6 +74,10 @@
                 });
         });
 
+        /**
+         * Scenario: A user cannot login with invalid information
+         */
+
         this.When(/^I enter my false authentication information$/, function () {
             // We enter into sign in fields wrong information
             return this.client.
@@ -89,6 +98,58 @@
                     return chai.expect(message).to.contain("User not found");
                 });
         });
+
+        /**
+         * Scenario: A user cannot login with invalid email address
+         */
+
+        this.When(/^I enter my invalid email address$/, function (callback) {
+            // We enter into sign in fields wrong information
+            return this.client.
+                waitForExist("#login-email").
+                // We set the values into email and password
+                setValue("#login-email", "notAnEmail").
+                setValue("#login-password", wrongPass).
+
+                // We click the Sign In button
+                click('#login-buttons-password');
+        });
+
+        this.Then(/^I should see an invalid email error message$/, function (callback) {
+            // We wait the Invalid email message to appear
+            return this.client.
+                waitForExist(".error-message").
+                getText(".error-message", function (error, message) {
+                    return chai.expect(message).to.contain("Invalid email");
+                });
+        });
+
+        /**
+         * Scenario: A user connot login with invalid password
+         */
+
+        this.When(/^I enter my invalid password$/, function (callback) {
+            // We enter into sign in fields wrong information
+            return this.client.
+                waitForExist("#login-email").
+                // We set the values into email and password
+                setValue("#login-email", myEmail).
+                setValue("#login-password", wrongPass).
+
+                // We click the Sign In button
+                click('#login-buttons-password');
+        });
+
+        this.Then(/^I should see an incorrect password error message$/, function (callback) {
+            // We wait the Incorrect password message to appear
+            return this.client.
+                waitForExist(".error-message").
+                getText(".error-message", function (error, message) {
+                    return chai.expect(message).to.contain("Incorrect password");
+                });
+        });
+
+
 
     }
 })();
