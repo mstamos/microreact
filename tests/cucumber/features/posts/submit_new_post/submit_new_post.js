@@ -7,6 +7,32 @@
          *   Scenario: Submit a new post
          */
 
+        var url = require('url');
+
+        this.Given(/^I am logged in$/, function (callback) {
+
+            // Wait
+            this.client.
+                // We navigate into home page
+                url(process.env.ROOT_URL).
+
+                // Wait for the page to load
+                waitForExist(".container", 1000).
+                waitForVisible(".container", 1000).
+
+                // We click the login button
+                click("#login-sign-in-link").
+                waitForExist("#login-email").
+
+                // We set the values into email and password
+                setValue("#login-email", "miltos@example.com").
+                setValue("#login-password", "passpass").
+
+                // We click the Sign In button
+                click('#login-buttons-password').
+                call(callback);
+        });
+
         this.Given(/^I navigate to submit new post page$/, function () {
             return this.client.
                 // We wait for the submit button to exist
