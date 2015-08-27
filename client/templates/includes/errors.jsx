@@ -10,7 +10,7 @@ let Error = React.createClass({
     render () {
         return (
             <div>
-                <div className="alert alert-danger" role="alert">
+                <div className="alert alert-danger error-alert" role="alert">
                     <button type="button" className="close" data-dismiss="alert">&times;</button>
                     {this.props.message}
                 </div>

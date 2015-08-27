@@ -2,6 +2,7 @@
     'use strict';
 
     module.exports = function () {
+
         this.Given(/^I fill in title with "([^"]*)"$/, function (postTitle) {
             // We set the passing title into #title input field
             return this.client.
@@ -27,6 +28,15 @@
                 waitForExist(".post-title").
                 getText(".post-title").should.become(postTitle);
         });
+
+        this.Then(/^I should get as a return an error message "([^"]*)"$/, function () {
+            // We check if the error class is visible on the screen
+            return this.client.
+                waitForExist(".error-alert").
+                isVisible(".error-alert");
+        });
+
+
     }
 
 })();

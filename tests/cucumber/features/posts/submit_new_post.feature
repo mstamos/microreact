@@ -15,3 +15,10 @@ Feature: Create New Post
     And   I fill in url with "http://www.meteorpoint.com"
     When  I submit the form
     Then  I should see the new Post with title "Meteor Point"
+
+  @dev
+  Scenario: Submit an existing project
+    Given I fill in title with "Meteor Point"
+    And   I fill in url with "http://www.meteorpoint.com"
+    When  I submit the form
+    Then  I should get as a return an error message "This link has already been posted"
