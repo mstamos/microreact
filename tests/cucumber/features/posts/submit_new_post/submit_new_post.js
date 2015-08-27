@@ -59,4 +59,5 @@
                 isVisible(".error-alert");
         });
     }
+
 })();
