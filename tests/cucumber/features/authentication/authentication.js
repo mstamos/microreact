@@ -5,7 +5,7 @@
 
         // General variables
         var myEmail = "miltos@example.com";
-        var pass = "passpass";
+        var myPass = "passpass";
         var signIn = "Sign in";
         var wrongEmail = "stamos@example.com";
         var wrongPass = "wrongPassword";
@@ -54,15 +54,7 @@
         });
 
         this.When(/^I enter my authentication information$/, function (callback) {
-            return this.client.
-                waitForExist("#login-email").
-
-                // We set the values into email and password
-                setValue("#login-email", myEmail).
-                setValue("#login-password", pass).
-
-                // We click the Sign In button
-                click('#login-buttons-password');
+            return loginWithCrendentials(this, myEmail, myPass);
         });
 
         this.Then(/^I should be logged in$/, function (callback) {
@@ -79,15 +71,7 @@
          */
 
         this.When(/^I enter my false authentication information$/, function () {
-            // We enter into sign in fields wrong information
-            return this.client.
-                waitForExist("#login-email").
-                // We set the values into email and password
-                setValue("#login-email", wrongEmail).
-                setValue("#login-password", wrongPass).
-
-                // We click the Sign In button
-                click('#login-buttons-password');
+            return loginWithCrendentials(this, wrongEmail, wrongPass);
         });
 
         this.Then(/^I should see a user not found error$/, function () {
@@ -104,15 +88,7 @@
          */
 
         this.When(/^I enter my invalid email address$/, function (callback) {
-            // We enter into sign in fields wrong information
-            return this.client.
-                waitForExist("#login-email").
-                // We set the values into email and password
-                setValue("#login-email", "notAnEmail").
-                setValue("#login-password", wrongPass).
-
-                // We click the Sign In button
-                click('#login-buttons-password');
+            return loginWithCrendentials(this, "notAnEmail", wrongPass);
         });
 
         this.Then(/^I should see an invalid email error message$/, function (callback) {
@@ -130,14 +106,7 @@
 
         this.When(/^I enter my invalid password$/, function (callback) {
             // We enter into sign in fields wrong information
-            return this.client.
-                waitForExist("#login-email").
-                // We set the values into email and password
-                setValue("#login-email", myEmail).
-                setValue("#login-password", wrongPass).
-
-                // We click the Sign In button
-                click('#login-buttons-password');
+            return loginWithCrendentials(this, myEmail, wrongPass);
         });
 
         this.Then(/^I should see an incorrect password error message$/, function (callback) {
@@ -148,8 +117,23 @@
                     return chai.expect(message).to.contain("Incorrect password");
                 });
         });
+    }
 
+    /**
+     * This function get the this object and en email and password and try to login the user
+     * @param self
+     * @param email
+     * @param pass
+     * @return {*|{phasedRegistrationNames}}
+     */
+    function loginWithCrendentials (self, email, pass) {
+        return self.client.
+            waitForExist("#login-email").
+            // We set the values into email and password
+            setValue("#login-email", email).
+            setValue("#login-password", pass).
 
-
+            // We click the Sign In button
+            click('#login-buttons-password');
     }
 })();
