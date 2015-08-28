@@ -12,3 +12,5 @@ accounts-ui
 react
 xolvio:cucumber
 kadira:flow-router
+sanjo:jasmine
+practicalmeteor:sinon

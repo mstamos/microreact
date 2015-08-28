@@ -29,7 +29,8 @@ PostItem = React.createClass({
         var owner= false;
         //We check if the user exists. If exists then we check if he is the owner of the post
         if (Meteor.userId()) {
-            owner = this.props.author === Meteor.user().username;
+            const user = Meteor.user()
+            owner = this.props.author === user.username;
         }
         let editUrl = `posts/${ this.props._id }/edit`;
         return (
