@@ -41,13 +41,19 @@ describe("PostItem", function () {
         expect($el.text()).toContain("Edit");
 
     });
-    //
-    //it("should go to post page", function () {
-    //    var fakeUrl = "posts/XYZ"
+
+    //it("should call showPost function", function () {
+    //    // We get the discuss button
+    //    var button = React.addons.TestUtils.findRenderedDOMComponentWithClass(component, "discuss");
+    //    console.log(button);
+    //    // We set a fake url
+    //    var fakeUrl = "posts/XYZ";
+    //    // We spy on FlowRouter object
     //    spyOn(FlowRouter, "go").and.returnValue(fakeUrl);
-    //    renderWithProps(defProps);
-    //    expect(PostItem.prototype.showPost($.Event("click"))).toBe(fakeUrl);
-    //    expect(FlowRouter.go.calls.argsFor(0)).toEqual("posts/XYZ");
+    //    // We simulate the click event into Discuss button
+    //    React.addons.TestUtils.Simulate.click(button.getDOMNode())
+    //    // We expect the FlowRouter.go function to has as paramter the below string
+    //    expect(FlowRouter.go.calls.argsFor(0)).toEqual(["/posts/XYZ"]);
     //});
-    
+
 });

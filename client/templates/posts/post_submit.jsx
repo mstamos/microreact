@@ -17,6 +17,7 @@ PostInput = React.createClass({
     },
     render () {
         const errorClassName = "form-group " + this.props.errorClassName;
+        const inputClass = "form-control "+this.props.title.toLowerCase();
         return (
             <div className={errorClassName}>
                 <label className="control-label" htmlFor={this.props.title.toLowerCase()}>{this.props.title}</label>
@@ -29,7 +30,7 @@ PostInput = React.createClass({
                         placeholder={this.props.placeholder}
                         value={this.props.value}
                         onChange={this.handleChangedValue}
-                        className="form-control"
+                        className={inputClass}
                         />
                     <span className="help-block">{this.props.errorMessage}</span>
                 </div>
