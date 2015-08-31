@@ -20,7 +20,7 @@ PostInput = React.createClass({
         const inputClass = "form-control "+this.props.title.toLowerCase();
         return (
             <div className={errorClassName}>
-                <label className="control-label" htmlFor={this.props.title.toLowerCase()}>{this.props.title}</label>
+                <label className="control-label" htmlFor={this.props.title}>{this.props.title}</label>
 
                 <div className="controls">
                     <input
