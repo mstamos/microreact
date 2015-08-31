@@ -38,4 +38,16 @@ describe("PostSubmit", function () {
 
         expect(actual).toBe(expected);
     });
+
+    it("should render AccessDenied component if there isn't a user(Meteor.userId = null)", function () {
+        // We spyOn Meteor.userId to provide null userId
+        spyOn(Meteor, "userId").and.returnValue(null);
+        // We render the component
+        renderWithProps({});
+
+        var actual = post.type;
+        var expected = AccessDenied;
+
+        expect(actual).toBe(expected);
+    });
 });
