@@ -120,7 +120,6 @@ PostSubmit = React.createClass({
             };
         }
         this.setState(stateOb);
-        console.log(this.state.titleValue);
     },
     render () {
         if (this.data.userIsLogged) {

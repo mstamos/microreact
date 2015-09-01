@@ -1,18 +1,26 @@
 describe("PostSubmit", function () {
-    var defProps, renderWithProps, post, el, $el;
+    var defProps, renderWithProps, post, el, $el, utilPost, renderedPost;
 
     beforeEach(function () {
+
         renderWithProps = function (props) {
             post = createComponent(PostSubmit, props);
             //el = React.findDOMNode(component);
             //$el = $(el);
+            renderedPost = renderComponent(PostSubmit, props);
+            el = React.findDOMNode(utilPost);
+            $el = $(el);
         };
+
     });
 
     describe("User is logged in", function () {
-        it("should render an input for post's title", function () {
+
+        beforeEach ( function () {
             // We spyOn Meteor.userId to provide a user id
             spyOn(Meteor, "userId").and.returnValue("xyz");
+        });
+        it("should render an input for post's title", function () {
             // We render the component
             renderWithProps({});
             //We get the post title children from PostSubmit component
@@ -27,8 +35,6 @@ describe("PostSubmit", function () {
         });
 
         it("should render an input for post's url", function () {
-            // We spyOn Meteor.userId to provide a user id
-            spyOn(Meteor, "userId").and.returnValue("xyz");
             // We render the component
             renderWithProps({});
             // We get the post url children from PostSubmit component
@@ -39,12 +45,30 @@ describe("PostSubmit", function () {
 
             expect(actual).toBe(expected);
         });
+
+        it("should handleInputChange() change titleValue state", function () {
+            // We render the component into dom
+            renderWithProps({});
+            // We call handleInputChange function from the rendered PostSubmit component
+            // and we pass some data
+            renderedPost.handleInputChange("title", "New Title");
+            // We write down the actual value of state titleValue
+            var actual = renderedPost.state.titleValue;
+            // We write down the expected value after we run the function
+            var expected = "New Title";
+
+            expect(actual).toBe(expected);
+
+        });
     });
 
     describe("User is not logged in", function () {
-        it("should render AccessDenied component ", function () {
+        beforeEach(function () {
             // We spyOn Meteor.userId to provide null userId
             spyOn(Meteor, "userId").and.returnValue(null);
+        });
+
+        it("should render AccessDenied component ", function () {
             // We render the component
             renderWithProps({});
 
