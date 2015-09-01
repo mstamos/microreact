@@ -1,28 +1,30 @@
 describe("PostSubmit", function () {
-    var renderComponentWithProps, shallowComponentWithProps, post, el, $el, utilPost, renderedPost;
+    var renderComponentWithProps, shallowComponentWithProps, post, el, $el, utilPost, renderedPost, renderType;
 
     beforeEach(function () {
 
-        renderComponentWithProps = function (props) {
-            renderedPost = renderComponent(PostSubmit, props);
-            el = React.findDOMNode(utilPost);
-            $el = $(el);
-        }
-        shallowComponentWithProps = function (props)  {
-            post = createComponent(PostSubmit, props);
+        renderComponentWithProps = function (props, renderType) {
+
+            if (renderType === "shallow") {
+                post = createComponent(PostSubmit, props);
+            } else if (renderType == "normal") {
+                post = renderComponent(PostSubmit, props);
+                el = React.findDOMNode(utilPost);
+                $el = $(el);
+            }
         }
     });
 
     describe("User is logged in", function () {
 
-        beforeEach ( function () {
+        beforeEach (function () {
             // We spyOn Meteor.userId to provide a user id
             spyOn(Meteor, "userId").and.returnValue("xyz");
         });
 
         it("should render an input for post's title", function () {
             // We render the component
-            shallowComponentWithProps({});
+            renderComponentWithProps({}, "shallow");
             //We get the post title children from PostSubmit component
             var postTitle = post.props.children[0];
 
@@ -36,7 +38,7 @@ describe("PostSubmit", function () {
 
         it("should render an input for post's url", function () {
             // We render the component
-            shallowComponentWithProps({});
+            renderComponentWithProps({}, "shallow");
             // We get the post url children from PostSubmit component
             var postUrl = post.props.children[1];
 
@@ -48,12 +50,12 @@ describe("PostSubmit", function () {
 
         it("should handleInputChange() change titleValue state", function () {
             // We render the component into dom
-            renderComponentWithProps({});
+            renderComponentWithProps({}, "normal");
             // We call handleInputChange function from the rendered PostSubmit component
             // and we pass some data
-            renderedPost.handleInputChange("title", "New Title");
+            post.handleInputChange("title", "New Title");
             // We write down the actual value of state titleValue
-            var actual = renderedPost.state.titleValue;
+            var actual = post.state.titleValue;
             // We write down the expected value after we run the function
             var expected = "New Title";
 
@@ -70,7 +72,7 @@ describe("PostSubmit", function () {
 
         it("should render AccessDenied component ", function () {
             // We render the component
-            shallowComponentWithProps({});
+            renderComponentWithProps({}, "shallow");
 
             var actual = post.type;
             var expected = AccessDenied;
