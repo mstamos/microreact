@@ -62,7 +62,7 @@ PostSubmit = React.createClass({
             urlValue: ""
         }
     },
-    formSubmition (event) {
+    formSubmission (event) {
         event.preventDefault();
 
         // We get the values from inputs
@@ -124,7 +124,17 @@ PostSubmit = React.createClass({
     render () {
         if (this.data.userIsLogged) {
             return (
-                <form className="main form page" onSubmit={this.formSubmition}>
+            /**
+             * We change onSubmit
+             * from
+             *  onSubmit = {this.formSubmission}
+             * to
+             *  onSubmit = {(e) => this.formSubmission(e)}
+             * for unit test events
+             * More details on this stackoverflow post
+             * http://stackoverflow.com/questions/26470679/test-a-form-with-jest-and-react-js-testutils
+             */
+                <form className="main form page" onSubmit={(e) => this.formSubmission(e)}>
                     <PostInput
                         title={"Title"}
                         placeholder={"Name your post"}
