@@ -21,6 +21,13 @@ describe("PostSubmit", function () {
             spyOn(Meteor, "userId").and.returnValue("xyz");
         });
 
+        it("should generate a submit form", function () {
+            renderComponentWithProps(PostSubmit, {}, "shallow");
+            var actual = post.props.children.length;
+            var expected = 3;
+            expect(actual).toBe(expected);
+        });
+
         it("should render an input for post's title", function () {
             // We render the component
             renderComponentWithProps(PostSubmit, {}, "shallow");
@@ -53,7 +60,9 @@ describe("PostSubmit", function () {
             // We get all input fields from our component
             var inputs = TestUtils.scryRenderedDOMComponentsWithTag(post, "input");
             // We find the title input component
-            var titleInput = inputs.find((el) => { return el.props.name == 'title' });
+            var titleInput = inputs.find((el) => {
+                return el.props.name == 'title'
+            });
             // We find the error area above title input. These area has a span tag
             var titleError = React.findDOMNode(titleInput).parentNode.querySelector("span");
 
@@ -66,7 +75,33 @@ describe("PostSubmit", function () {
             TestUtils.Simulate.submit(form.getDOMNode());
 
             expect(titleError.innerHTML).toBe("Please fill in a headline");
+        });
 
+        it("should render an error when the url input is empty", function () {
+            // We render our component
+            renderComponentWithProps(PostSubmit, {}, "normal");
+            // We get all input fields from our component
+            var inputs = TestUtils.scryRenderedDOMComponentsWithTag(post, "input");
+            // We find the url input component
+            var urlInput = inputs.find((el) => {
+                return el.props.name == 'url'
+            });
+            // We find the error section below url input
+            var urlError = React.findDOMNode(urlInput).parentNode.querySelector("span");
+            // We find the title input component
+            var titleInput = inputs.find((el) => {
+                return el.props.name == 'title'
+            });
+            // We change the value of the title input so only the url input to be empty
+            TestUtils.Simulate.change(titleInput, {target: {value: "someValue"}});
+            // We search for form tag into rendered component
+            var form = TestUtils.findRenderedDOMComponentWithTag(post, "form");
+            // We simulate the submission
+            // on this submission the default value for url is "" (empty)
+            // so after submit we will have an error message
+            TestUtils.Simulate.submit(form.getDOMNode());
+            // We expect to be rendered the error message for url
+            expect(urlError.innerHTML).toBe("Please fill in a URL");
         });
 
         it("should handleInputChange() change titleValue state", function () {
