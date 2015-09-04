@@ -47,6 +47,28 @@ describe("PostSubmit", function () {
             expect(actual).toBe(expected);
         });
 
+        it("should render an error when the title is empty", function () {
+            // We render our component
+            renderComponentWithProps(PostSubmit, {}, "normal");
+            // We get all input fields from our component
+            var inputs = TestUtils.scryRenderedDOMComponentsWithTag(post, "input");
+            // We find the title input component
+            var titleInput = inputs.find((el) => { return el.props.name == 'title' });
+            // We find the error area above title input. These area has a span tag
+            var titleError = React.findDOMNode(titleInput).parentNode.querySelector("span");
+
+
+            // We search for form tag into rendered component
+            var form = TestUtils.findRenderedDOMComponentWithTag(post, "form");
+            // We simulate the submission
+            // on this submission the default value for title and url are "" (empty)
+            // so after submit we will have an error message
+            TestUtils.Simulate.submit(form.getDOMNode());
+
+            expect(titleError.innerHTML).toBe("Please fill in a headline");
+
+        });
+
         it("should handleInputChange() change titleValue state", function () {
             // We render the component into dom
             renderComponentWithProps(PostSubmit, {}, "normal");
