@@ -6,15 +6,9 @@
  *      PostItem
  */
 PostList = React.createClass({
-    mixins: [ReactMeteorData],
-    getMeteorData () {
-        return {
-            allPosts: Posts.find().fetch()
-        }
-    },
     render () {
         // Iterate through all posts and create a post item for each of them
-        let posts = this.data.allPosts.map(function (post) {
+        let posts = this.props.allPosts.map(function (post) {
             return <PostItem
                 key={post._id}
                 _id={post._id}
@@ -28,6 +22,24 @@ PostList = React.createClass({
             <div className="posts page">
                 {posts}
             </div>
+        )
+    }
+});
+
+PostListContainer = React.createClass({
+    mixins: [ReactMeteorData],
+    getMeteorData () {
+        return {
+            allPosts: Posts.find().fetch()
+        }
+    },
+    render () {
+        let renderedComponent = <Loading />
+        if (FlowRouter.subsReady("posts")) {
+            renderedComponent = <PostList allPosts={this.data.allPosts} />
+        }
+        return (
+            renderedComponent
         )
     }
 });

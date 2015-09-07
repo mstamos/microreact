@@ -4,7 +4,7 @@ FlowRouter.route('/', {
         this.register("posts", Meteor.subscribe("posts"));
     },
     action () {
-        React.render(<PostList />, document.getElementById("yield-section"));
+        React.render(<PostListContainer />, document.getElementById("yield-section"));
     }
 });
 

@@ -1,5 +1,5 @@
 describe("PostSubmit", function () {
-    var renderComponentWithProps, post, el, $el, utilPost;
+    var renderComponentWithProps, post;
 
     beforeEach(function () {
 
@@ -8,8 +8,6 @@ describe("PostSubmit", function () {
                 post = createComponent(component, props);
             } else if (renderType == "normal") {
                 post = renderComponent(component, props);
-                el = React.findDOMNode(post);
-                $el = $(el);
             }
         }
     });
@@ -22,8 +20,11 @@ describe("PostSubmit", function () {
         });
 
         it("should generate a submit form", function () {
+            // We shallow render our component
             renderComponentWithProps(PostSubmit, {}, "shallow");
+            // We get the length of component's children
             var actual = post.props.children.length;
+            // We expect to has 3 children the 2 input fields and the button
             var expected = 3;
             expect(actual).toBe(expected);
         });
