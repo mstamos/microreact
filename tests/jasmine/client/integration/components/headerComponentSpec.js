@@ -11,7 +11,7 @@ describe("Header Component", function () {
             }
         }
     });
-    
+
     it("should not show post submit button to anonymous user", function () {
         // We render our component
         renderComponentWithProps(Header, {}, "normal");
@@ -56,12 +56,21 @@ describe("Header Component", function () {
         });
     });
 
-    it("should be throw error if credentials are wrong", function (done) {
-        // We login our user with wrong credentials
-        Meteor.loginWithPassword("WrongUser", "WrongPass", function (err) {
+    it("should be throw error if email is wrong", function (done) {
+        // We login our user with wrong email
+        Meteor.loginWithPassword("WrongUser", "passpass", function (err) {
             // We expect errors to be returned
             expect(err).toBeDefined();
             done();
         })
     });
+
+    it("should be throw error if credentials are wrong", function (done) {
+        // We login our user with wrong password
+        Meteor.loginWithPassword("miltos@example.com", "WrongPass", function (err) {
+            // We expect errors to be returned
+            expect(err).toBeDefined();
+            done();
+        })
+    })
 });
