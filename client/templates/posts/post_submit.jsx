@@ -18,7 +18,6 @@ PostInput = React.createClass({
     render () {
         const errorClassName = "form-group " + this.props.errorClassName;
         const inputClass = "form-control "+this.props.title.toLowerCase();
-        const componentRef = "\""+this.props.title.toLowerCase() +"\""
         return (
             <div className={errorClassName}>
                 <label className="control-label" htmlFor={this.props.title.toLowerCase()}>{this.props.title}</label>
@@ -109,17 +108,6 @@ PostSubmit = React.createClass({
 
             FlowRouter.go(`/posts/${ result._id }`);
         });
-    },
-    handleInputChange (prop, val) {
-        var stateOb = {
-            urlValue: val
-        };
-        if (prop === "title") {
-            stateOb = {
-                titleValue: val
-            };
-        }
-        this.setState(stateOb);
     },
     render () {
         if (this.data.userIsLogged) {
