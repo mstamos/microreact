@@ -1,8 +1,8 @@
 # Meteor + React + FlowRouter + ES6 + Tests = Microreact
 
-I wanted to learn React with Meteor by building something. So I decide to
+I wanted to learn React with Meteor by building something. So I decided to
 rebuild [Microscope] (https://github.com/DiscoverMeteor/Microscope), the app with which I learned Meteor.
-[Microscope] (https://github.com/DiscoverMeteor/Microscope) is an app which someone can build it by reading the [Discover Meteor Book] (http://www.discovermeteor.com).
+[Microscope] (https://github.com/DiscoverMeteor/Microscope) is an app that someone can build by reading the [Discover Meteor Book] (http://www.discovermeteor.com).
 In this version I rebuilt the app until chapter 10-5 and you can find a dome [here](http://microreact.meteor.com). You can find a dome at [Microreact](http://microreact.meteor.com/).
 
 Except from integrating React and Meteor I wanted to learn how to write tests for my applications. So in this repo you will find 60 tests, 13 unit tests, 6 integration and 41 end-to-end. 
@@ -33,7 +33,7 @@ $ CUCUMBER_TAGS=@rerun meteor
 ```
 
 
-Below you will find all the resources I used to learn writing the tests.
+Below you will find all the resources I used to learn writing tests.
       
 ## Test Resources  
     
@@ -78,4 +78,4 @@ Below you will find all the resources I used to learn writing the tests.
 Feel free to open a new issue if you find any mistakes or you want further explanations or you want to suggest something else.
 I am quite new on React and Testing so I tried to do my best.
 
-This repo doesn't officially supported by [Discover Meteor](http://www.discovermeteor.com).
+This repo isn't officially supported by [Discover Meteor](http://www.discovermeteor.com).
