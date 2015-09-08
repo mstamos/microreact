@@ -105,20 +105,6 @@ describe("PostSubmit", function () {
             expect(urlError.innerHTML).toBe("Please fill in a URL");
         });
 
-        it("should handleInputChange() change titleValue state", function () {
-            // We render the component into dom
-            renderComponentWithProps(PostSubmit, {}, "normal");
-            // We call handleInputChange function from the rendered PostSubmit component
-            // and we pass some data
-            post.handleInputChange("title", "New Title");
-            // We write down the actual value of state titleValue
-            var actual = post.state.titleValue;
-            // We write down the expected value after we run the function
-            var expected = "New Title";
-
-            expect(actual).toBe(expected);
-        });
-
         it("should call formSubmission when submit the form", function () {
             // We render into DOM our component
             renderComponentWithProps(PostSubmit, {}, "normal");
