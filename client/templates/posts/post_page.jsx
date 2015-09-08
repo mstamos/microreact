@@ -57,7 +57,7 @@ PostPage = React.createClass({
                         _id={post._id}
                         title={post.title}
                         url={post.url}
-                        author={post.author}
+                        authorId={post.userId}
                         commentsCount={post.commentsCount}
                         />
                     <ul className="comments">

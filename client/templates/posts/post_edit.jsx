@@ -48,7 +48,6 @@ PostEdit = React.createClass({
                         placeholder={"Name your post"}
                         errorClassName={this.state.errorsTitleClass}
                         errorMessage={this.state.errorsTitle}
-                        onInputChange={this.handleInputChange.bind(null, "title")}
                         value={this.data.postData.title}
                         />
                     <PostInput
@@ -56,7 +55,6 @@ PostEdit = React.createClass({
                         placeholder={"Your URL"}
                         errorClassName={this.state.errorsUrlClass}
                         errorMessage={this.state.errorsUrl}
-                        onInputChange={this.handleInputChange.bind(null, "url")}
                         value={this.data.postData.url }
                         />
                     <input type="submit" value="Submit" className="btn btn-primary"/>
