@@ -1,4 +1,4 @@
-# Meteor + React + FlowRouter + ES6 + Tests = Microreact
+# Microscope + React + FlowRouter + Tests = Microreact
 
 I wanted to learn React with Meteor by building something. So I decided to
 rebuild [Microscope] (https://github.com/DiscoverMeteor/Microscope), the app with which I learned Meteor.

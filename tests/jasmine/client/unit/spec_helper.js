@@ -6,7 +6,3 @@ renderComponent = function (comp, props) {
         React.createElement(comp, props)
     );
 };
-
-simulateClickOn = function($el) {
-    React.addons.TestUtils.Simulate.click($el[0]);
-};
