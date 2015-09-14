@@ -62,6 +62,7 @@ Below you will find all the resources I used to learn writing tests.
 3. [Approaches to testing React components - an overview] (http://reactkungfu.com/2015/07/approaches-to-testing-react-components-an-overview/)
 4. [Unit Testing and Building a React Component With Jest, Gulp and React Test Utils](http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/)
 5. [Unit and Functional Testing React Components] (http://reactjsnews.com/testing-in-react/)  
+6. [How React Components Make UI Testing Easy] (http://www.toptal.com/react/how-react-components-make-ui-testing-easy)
 
 
 ##The packages I use are:
