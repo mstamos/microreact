@@ -1,7 +1,7 @@
 Feature: Restrict access to unregistered user
 
   As unregistered user
-  I want to navigate only on permited pages
+  I want to navigate only on permitted pages
   So that I can see the public content of the page
 
   Background:
