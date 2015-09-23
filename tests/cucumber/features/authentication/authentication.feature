@@ -29,8 +29,8 @@ Feature: Allow user to login and logout
     And   I enter my invalid email address
     Then  I should see an invalid email error message
 
-  @rerun
-  Scenario: A user connot login with invalid password
+  @dev
+  Scenario: A user cannot login with invalid password
     Given I am on the home page
     When  I click on sign in link
     And   I enter my invalid password

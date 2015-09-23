@@ -101,7 +101,7 @@
         });
 
         /**
-         * Scenario: A user connot login with invalid password
+         * Scenario: A user cannot login with invalid password
          */
 
         this.When(/^I enter my invalid password$/, function (callback) {
@@ -109,7 +109,7 @@
             return loginWithCrendentials(this, myEmail, wrongPass);
         });
 
-        this.Then(/^I should see an incorrect password error message$/, function (callback) {
+        this.Then(/^I should see an incorrect password error message$/, (callback) => {
             // We wait the Incorrect password message to appear
             return this.client.
                 waitForExist(".error-message").
