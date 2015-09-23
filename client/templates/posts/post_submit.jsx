@@ -11,10 +11,6 @@ PostInput = React.createClass({
         title: React.PropTypes.string.isRequired,
         placeholder: React.PropTypes.string.isRequired
     },
-    handleChangedValue (event) {
-        event.preventDefault();
-        this.props.onInputChange(event.target.value)
-    },
     render () {
         const errorClassName = "form-group " + this.props.errorClassName;
         const inputClass = "form-control "+this.props.title.toLowerCase();
@@ -128,7 +124,6 @@ PostSubmit = React.createClass({
                         placeholder={"Name your post"}
                         errorClassName={this.state.errorsTitleClass}
                         errorMessage={this.state.errorsTitle}
-                        onInputChange={this.handleInputChange.bind(null, "title")}
                         value={this.state.titleValue}
                         />
                     <PostInput
@@ -136,7 +131,6 @@ PostSubmit = React.createClass({
                         placeholder={"Your URL"}
                         errorClassName={this.state.errorsUrlClass}
                         errorMessage={this.state.errorsUrl}
-                        onInputChange={this.handleInputChange.bind(null, "url")}
                         value={this.state.urlValue}
                         />
                     <input type="submit" value="Submit" className="btn btn-primary sub-post-but"/>

@@ -12,7 +12,7 @@ PostPage = React.createClass({
     getMeteorData () {
         return {
             postData: this.getData(),
-            comments: Comments.find({postId: this.props._id}),
+            comments: Comments.find({postId: this.props._id}).fetch(),
             userIsLogged: Meteor.userId()
         }
     },
