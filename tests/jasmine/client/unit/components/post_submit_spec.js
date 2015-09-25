@@ -105,7 +105,8 @@ describe("PostSubmit", function () {
             expect(urlError.innerHTML).toBe("Please fill in a URL");
         });
 
-        it("should call formSubmission when submit the form", function () {
+
+        it("should call formSubmission when submit the form",  () => {
             // We render into DOM our component
             renderComponentWithProps(PostSubmit, {}, "normal");
             // We spy on formSubmission function which is responsible
@@ -127,7 +128,7 @@ describe("PostSubmit", function () {
             spyOn(Meteor, "userId").and.returnValue(null);
         });
 
-        it("should render AccessDenied component ", function () {
+        it("should render AccessDenied component ", () => {
             // We render the component
             renderComponentWithProps(PostSubmit, {}, "shallow");
 

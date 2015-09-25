@@ -10,9 +10,12 @@
 
         this.Then(/^I should see the title on the header "([^"]*)"$/, function (expectedTitle) {
             //As a new user when I navigate to home page must see application's title which is Microscope
-            return this.client.
-                waitForExist('.app-title').
-                getText('.app-title').should.become(expectedTitle);
+            client.waitForExist('.app-title');
+
+            var actual = client.getText('.app-title');
+            var expected = expectedTitle;
+
+            expect(actual).toBe(expected);
         });
     }
 })();

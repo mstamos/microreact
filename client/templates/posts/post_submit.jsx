@@ -11,10 +11,6 @@ PostInput = React.createClass({
         title: React.PropTypes.string.isRequired,
         placeholder: React.PropTypes.string.isRequired
     },
-    handleChangedValue (event) {
-        event.preventDefault();
-        this.props.onInputChange(event.target.value)
-    },
     render () {
         const errorClassName = "form-group " + this.props.errorClassName;
         const inputClass = "form-control "+this.props.title.toLowerCase();

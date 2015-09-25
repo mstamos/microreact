@@ -39,12 +39,14 @@ Below you will find all the resources I used to learn writing tests.
     
 ###1. Cucumber
 #####1.1 Articles
-1. [E2E testing your Meteor app with Cucumber, WebdriverIO and Chai] (http://g00glen00b.be/e2e-testing-your-meteor-app-with-cucumber-webdriverio-and-chai/)
-2. [A Basic Cucumber Meteor Tutorial] (http://www.mhurwi.com/a-basic-cucumber-meteor-tutorial/)
-3. [Cucumber.js and Meteor - The why and how of it] (http://joshowens.me/cucumber-js-and-meteor-the-why-and-how-of-it/)
-4. [Writing Effective Cucumber Tests] (https://www.coveros.com/writing-effective-cucumber-tests/)
-5. [15 Expert Tips for Using Cucumber] (https://blog.engineyard.com/2009/15-expert-tips-for-using-cucumber)
-6. [Cucumber.js and Meteor - The why and how of it] (http://joshowens.me/cucumber-js-and-meteor-the-why-and-how-of-it/)
+1. [Announcing Xolv.io Cucumber v0.14 - Synchronous Testing!](https://forums.meteor.com/t/announcing-xolv-io-cucumber-v0-14-synchronous-testing/10278)
+2. [Migrate to synchronous style](https://chimp.readme.io/docs/migrate-to-synchronous-style)
+3. [E2E testing your Meteor app with Cucumber, WebdriverIO and Chai] (http://g00glen00b.be/e2e-testing-your-meteor-app-with-cucumber-webdriverio-and-chai/)
+4. [A Basic Cucumber Meteor Tutorial] (http://www.mhurwi.com/a-basic-cucumber-meteor-tutorial/)
+5. [Cucumber.js and Meteor - The why and how of it] (http://joshowens.me/cucumber-js-and-meteor-the-why-and-how-of-it/)
+6. [Writing Effective Cucumber Tests] (https://www.coveros.com/writing-effective-cucumber-tests/)
+7. [15 Expert Tips for Using Cucumber] (https://blog.engineyard.com/2009/15-expert-tips-for-using-cucumber)
+8. [Cucumber.js and Meteor - The why and how of it] (http://joshowens.me/cucumber-js-and-meteor-the-why-and-how-of-it/)
 
 #####1.2 Videos
 1. [Test a Meteor app with Cucumber.js] (https://www.youtube.com/watch?v=aLlHMToDb6I)
