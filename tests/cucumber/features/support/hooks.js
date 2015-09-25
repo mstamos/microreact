@@ -3,11 +3,11 @@
     'use strict';
 
     module.exports = function () {
-        this.Before(function (callback) {
+        this.Before(function () {
             // This code runs before every scenario
-            this.server.call("removePosts");
-            this.server.call("addInitialPosts");
-            this.server.call('addUser', {email: "miltos@example.com"});
+            server.call("removePosts");
+            server.call("addInitialPosts");
+            server.call('addUser', {email: "miltos@example.com"});
         });
     };
 
