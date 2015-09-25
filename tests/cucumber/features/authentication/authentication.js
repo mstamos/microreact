@@ -3,6 +3,7 @@
 
     module.exports = function () {
 
+        var actual, expected;
         // General variables
         var myEmail = "miltos@example.com";
         var myPass = "passpass";
@@ -14,23 +15,21 @@
         // Npm modules
         var url = require("url");
 
-
         /**
          *  Scenario: A user can login with valid information
          */
 
-        this.Given(/^I am signed out$/, function (callback) {
-            return this.client.
-                // We navigate into home page
-                url(process.env.ROOT_URL).
-                // We wait for the Sign In link to be visible
-                waitForExist(".container").
-                waitForVisible(".container").
-                waitForVisible("#login-sign-in-link").
-                getText("#login-sign-in-link", function (error, text) {
-                    // We check if th link includes the words Sign in
-                    return chai.expect(text).to.contain(signIn);
-                });
+        this.Given(/^I am signed out$/, function () {
+            var client = this.client;
+            browser.url(process.env.ROOT_URL);
+            browser.waitForExist(".container");
+            browser.waitForVisible(".container");
+            browser.waitForVisible("#login-sign-in-link");
+
+            actual = browser.getText("#login-sign-in-link");
+            expected = "Sign in";
+
+            expect(actual).toContain(expected);
         });
 
         this.Given(/^I am on the home page$/, function () {
@@ -41,20 +40,20 @@
 
         this.When(/^I click on sign in link$/, function () {
             // Wait
-            return this.client.
-                // We navigate into home page
-                url(process.env.ROOT_URL).
+            var client = this.client;
+            // We navigate into home page
+            client.url(process.env.ROOT_URL);
 
-                // Wait for the page to load
-                waitForExist(".container", 1000).
-                waitForVisible(".container", 1000).
+            // Wait for the page to load
+            client.waitForExist(".container", 1000);
+            client.waitForVisible(".container", 1000)
 
-                // We click the login button
-                click("#login-sign-in-link");
+            // We click the login button
+            client.click("#login-sign-in-link");
         });
 
         this.When(/^I enter my authentication information$/, function (callback) {
-            return loginWithCrendentials(this, myEmail, myPass);
+            return loginWithCredentials(browser, myEmail, wrongPass);
         });
 
         this.Then(/^I should be logged in$/, function (callback) {
@@ -71,7 +70,7 @@
          */
 
         this.When(/^I enter my false authentication information$/, function () {
-            return loginWithCrendentials(this, wrongEmail, wrongPass);
+            return loginWithCredentials(browser, myEmail, wrongPass);
         });
 
         this.Then(/^I should see a user not found error$/, function () {
@@ -88,7 +87,7 @@
          */
 
         this.When(/^I enter my invalid email address$/, function (callback) {
-            return loginWithCrendentials(this, "notAnEmail", wrongPass);
+            return loginWithCredentials(browser, myEmail, wrongPass);
         });
 
         this.Then(/^I should see an invalid email error message$/, function (callback) {
@@ -104,18 +103,17 @@
          * Scenario: A user cannot login with invalid password
          */
 
-        this.When(/^I enter my invalid password$/, function (callback) {
+        this.When(/^I enter my invalid password$/, function () {
             // We enter into sign in fields wrong information
-            return loginWithCrendentials(this, myEmail, wrongPass);
+            return loginWithCredentials(browser, myEmail, wrongPass);
         });
 
-        this.Then(/^I should see an incorrect password error message$/, (callback) => {
+        this.Then(/^I should see an incorrect password error message$/, function () {
             // We wait the Incorrect password message to appear
-            return this.client.
-                waitForExist(".error-message").
-                getText(".error-message", function (error, message) {
-                    return chai.expect(message).to.contain("Incorrect password");
-                });
+            browser.waitForExist(".error-message");
+            actual = browser.getText(".error-message");
+            expected = "Incorrect password";
+            expect(actual).toBe(expected);
         });
     }
 
@@ -126,14 +124,13 @@
      * @param pass
      * @return {*|{phasedRegistrationNames}}
      */
-    function loginWithCrendentials (self, email, pass) {
-        return self.client.
-            waitForExist("#login-email").
-            // We set the values into email and password
-            setValue("#login-email", email).
-            setValue("#login-password", pass).
+    function loginWithCredentials(browser, email, pass) {
+        browser.waitForExist("#login-email");
+        // We set the values into email and password
+        browser.setValue("#login-email", email);
+        browser.setValue("#login-password", pass);
 
-            // We click the Sign In button
-            click('#login-buttons-password');
+        // We click the Sign In button
+        browser.click('#login-buttons-password')
     }
 })();

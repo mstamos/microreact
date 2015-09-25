@@ -7,7 +7,7 @@
             // This code runs before every scenario
             this.server.call("removePosts");
             this.server.call("addInitialPosts");
-            this.server.call('addUser', {email: "miltos@example.com"}).then(callback);
+            this.server.call('addUser', {email: "miltos@example.com"});
         });
     };
 
