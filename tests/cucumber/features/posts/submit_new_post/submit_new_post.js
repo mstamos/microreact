@@ -79,7 +79,7 @@
 
         this.Then(/^I should see an error message$/, function () {
             // We check if the error class is visible on the screen
-            client.waitForExist(".error-alert");
+            client.waitForExist(".error-alert")
             client.isVisible(".error-alert");
         });
     }
